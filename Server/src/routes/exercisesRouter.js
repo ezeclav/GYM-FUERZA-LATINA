@@ -7,6 +7,7 @@ import authUserController from "../middlewares/authUserController.js";
 import {
   cantEditController,
   exerciseExistsController,
+  likeExistController,
 } from "../middlewares/index.js";
 
 import {
@@ -67,5 +68,7 @@ router.post(
 );
 
 // Para listar los LIKE de un usuario
+
+router.get("/listlikes/:entryId", authUserController, likeExistController);
 
 export default router;

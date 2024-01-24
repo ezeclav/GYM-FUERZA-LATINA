@@ -1,7 +1,7 @@
 import getPool from "../../database/getPool.js";
 import { favAlreadyExistsError } from "../../services/errorService.js";
 
-const insertLikeModel = async (exerciseId, userId) => {
+const insertLikeModel = async (userId, exerciseId) => {
   const pool = await getPool();
 
   /////////////////////// COMPROBAMOS SI YA EL USUARIO LE DIO LIKE. //////////////////////
@@ -25,7 +25,7 @@ const insertLikeModel = async (exerciseId, userId) => {
     [exerciseId, userId],
   );
 
-  return { userId, exerciseId };
+  return result;
 };
 
 export default insertLikeModel;

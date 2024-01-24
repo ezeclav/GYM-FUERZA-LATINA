@@ -6,12 +6,12 @@ const userExistsController = async (req, res, next) => {
     const pool = await getPool();
 
     const userId = req.params.userId || req.user?.id;
-    console.log(userId);
+
     const [user] = await pool.query(
       `
                 SELECT id_user FROM users WHERE id_user = ?
             `,
-      [userId]
+      [userId],
     );
 
     if (!user.length) {

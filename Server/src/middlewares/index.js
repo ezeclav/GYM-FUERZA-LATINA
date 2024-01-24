@@ -4,7 +4,7 @@ import authUserController from "./authUserController.js";
 import cantEditController from "./cantEditController.js";
 import exerciseExistsController from "./exerciseExistsController.js";
 import userExistsController from "./userExistsController.js";
-
+import likeExistController from "./likeExistController.js";
 export {
   notFoundController,
   errorController,
@@ -12,4 +12,5 @@ export {
   cantEditController,
   exerciseExistsController,
   userExistsController,
+  likeExistController,
 };
