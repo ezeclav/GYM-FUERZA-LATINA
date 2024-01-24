@@ -8,6 +8,7 @@ import {
   cantEditController,
   exerciseExistsController,
   likeExistController,
+  userExistsController,
 } from "../middlewares/index.js";
 
 import {
@@ -64,11 +65,19 @@ router.get(
 router.post(
   "/exercises/like/:entryId/",
   authUserController,
+  userExistsController,
   likeEntryController,
 );
 
 // Para listar los LIKE de un usuario
 
-router.get("/listlikes", authUserController, likeExistController);
+router.get(
+  "/listlikes",
+  authUserController,
+  userExistsController,
+  likeExistController,
+);
+
+//router.delete("/deletelikes/:exercisesId", authUserController,userExistsController, likeExistController);
 
 export default router;
