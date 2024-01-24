@@ -19,12 +19,12 @@ const insertLikeModel = async (userId, exerciseId) => {
   /////////////////// SE INSERTA EL LIKE DEL USUARIO //////////////////////
   const [result] = await pool.query(
     `
-            INSERT INTO like_exercises (exerciseId, userId)
-            VALUES (?,?)
-        `,
-    [exerciseId, userId],
+    INSERT INTO like_exercises (userId, exerciseId)
+    VALUES (?, ?)
+    `,
+    [userId, exerciseId],
   );
-
+  console.log(userId);
   return result;
 };
 
