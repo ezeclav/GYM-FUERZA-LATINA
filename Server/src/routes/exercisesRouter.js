@@ -17,7 +17,7 @@ import {
   deleteExercisescontroller,
   listExercisesController,
   getExercisesController,
-  likeEntryController,
+  likeExerciseController,
 } from "../controllers/exercises/index.js";
 
 ///////////////////////////////////////////////////////////////
@@ -66,7 +66,7 @@ router.post(
   "/exercises/like/:exerciseId",
   authUserController,
   userExistsController,
-  likeEntryController
+  likeExerciseController
 );
 
 // Para listar los LIKE de un usuario

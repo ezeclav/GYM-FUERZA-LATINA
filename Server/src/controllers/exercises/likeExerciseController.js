@@ -1,6 +1,6 @@
 import insertLikeModel from "../../models/exercises/insertLikeModel.js";
 
-const likeEntryController = async (req, res, next) => {
+const likeExerciseController = async (req, res, next) => {
   try {
     const { exerciseId } = req.params;
     const userId = req.user.id;
@@ -16,4 +16,4 @@ const likeEntryController = async (req, res, next) => {
   }
 };
 
-export default likeEntryController;
+export default likeExerciseController;
