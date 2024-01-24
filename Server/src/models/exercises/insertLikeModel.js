@@ -24,7 +24,7 @@ const insertLikeModel = async (userId, exerciseId) => {
     `,
     [userId, exerciseId],
   );
-  console.log(userId);
+
   return result;
 };
 

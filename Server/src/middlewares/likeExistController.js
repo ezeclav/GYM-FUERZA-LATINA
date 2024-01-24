@@ -18,8 +18,10 @@ const listLikesController = async (req, res, next) => {
     if (!likes.length) {
       notFoundError(`${userId}`);
     }
-
-    res.json(likes);
+    res.send({
+      status: "ok",
+      data: likes,
+    });
   } catch (error) {
     next(error);
   }

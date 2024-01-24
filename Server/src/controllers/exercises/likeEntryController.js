@@ -9,7 +9,7 @@ const likeEntryController = async (req, res, next) => {
 
     res.send({
       status: "ok",
-      data: like,
+      message: "like guardado",
     });
   } catch (error) {
     next(error);
