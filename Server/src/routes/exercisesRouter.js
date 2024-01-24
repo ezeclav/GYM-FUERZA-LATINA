@@ -69,6 +69,6 @@ router.post(
 
 // Para listar los LIKE de un usuario
 
-router.get("/listlikes/:entryId", authUserController, likeExistController);
+router.get("/listlikes", authUserController, likeExistController);
 
 export default router;

@@ -14,7 +14,7 @@ const insertLikeModel = async (userId, exerciseId) => {
     [exerciseId, userId],
   );
 
-  if (favs.length >= 11) favAlreadyExistsError();
+  if (favs.length >= 1) favAlreadyExistsError();
 
   /////////////////// SE INSERTA EL LIKE DEL USUARIO //////////////////////
   const [result] = await pool.query(
