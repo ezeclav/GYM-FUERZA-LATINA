@@ -2,10 +2,10 @@ import insertLikeModel from "../../models/exercises/insertLikeModel.js";
 
 const likeEntryController = async (req, res, next) => {
   try {
-    const { entryId } = req.params;
+    const { exerciseId } = req.params;
     const userId = req.user.id;
     console.log(userId);
-    const like = await insertLikeModel(userId, entryId, new Date());
+    const like = await insertLikeModel(userId, exerciseId, new Date());
 
     res.send({
       status: "ok",

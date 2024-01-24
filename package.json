@@ -2,16 +2,16 @@
   "dependencies": {
     "concurrently": "^8.2.2"
   },
-  "name": "proyecto2front",
+  "name": "proyecto3front",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "cd server && npm i && cd ../Client && npm i",
-    "start": "concurrently \"cd server && npm run dev\"  \"cd Client && npm run dev\" ",
-    "initDb": "cd server && npm run initDb",
-    "build": "cd Client && npm run build"
+    "install": "cd server && npm i && cd ../cliente && npm i",
+    "start": "concurrently \"cd server && npm run dev\"  \"cd cliente && npm run dev\" ",
+    "initDb": "cd server && npm run initDB",
+    "build": "cd cliente && npm run build"
   },
   "keywords": [],
   "author": "",

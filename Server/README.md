@@ -1,4 +1,4 @@
-# Proyecto 2 -- GIMNASIOS FUERZA LATINA
+# Proyecto 3 -- GYM FUERZA LATINA
 
 ## TÍTULO
 
@@ -6,7 +6,7 @@ Aplicación para organizar internamente los entrenamientos en un gimnasio.
 
 ## DESCRIPCIÓN
 
-API que permite publicar ejercicios para la gestión de los mismos en un
+APP que permite publicar ejercicios para la gestión de los mismos en un
 gimnasio. Los usuarios serán los trabajadores del gimnasio.
 
 ### USUARIOS ANÓNIMOS
@@ -19,10 +19,10 @@ Pueden ver la landing de la plataforma donde podrán registrarse o hacer login.
 
   - nombre
   - descripción
-  - foto
   - tipología
   - grupo muscular
   - equipamiento
+  - foto
 
 - Puede modificar o eliminar un entrenamiento
 
@@ -50,8 +50,11 @@ Pueden ver la landing de la plataforma donde podrán registrarse o hacer login.
 - `PUT: /modifExercise/:exerciseId` (modificar un ejercicio, validando si el User es Admin)
 - `DELETE: /deleteExercise/:exerciseId` (eliminar un ejercicio, validando si el User es Admin)
 - `GET: /exercises` (visualizar todos los ejercicios)
+- `GET: /exercises?query=params` (visualizar todos los ejercicios que cumplan la condición de búsqueda, según criterio)
 - `GET: /exercise/:exerciseId` (visualizar un ejercicio según su ID)
-- `POST: /exercises/:exerciseId/like` (darle LIKE a un ejercicio)
+- `POST: /exercises/like/:exerciseId` (darle LIKE a un ejercicio)
+- `DELETE: /exercises/dislike/:exerciseId` (quitarle LIKE a un ejercicio)
+- `GET: /listlikes` (enlistar todos los ejercicios favoritos que el usuario dió LIKE)
 
 - ## Pasos para hacer la instalación
 
