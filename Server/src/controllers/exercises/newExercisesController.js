@@ -18,7 +18,7 @@ const newExercisesController = async (req, res, next) => {
       typology,
       muscle_group,
       equipment,
-      userId
+      userId,
     );
 
     let photos = [];

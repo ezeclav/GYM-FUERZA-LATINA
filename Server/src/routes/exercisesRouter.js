@@ -7,7 +7,6 @@ import authUserController from "../middlewares/authUserController.js";
 import {
   cantEditController,
   exerciseExistsController,
-  userExistsController,
 } from "../middlewares/index.js";
 
 import {
@@ -16,7 +15,7 @@ import {
   deleteExercisescontroller,
   listExercisesController,
   getExercisesController,
-  favExercisesController,
+  likeEntryController,
 } from "../controllers/exercises/index.js";
 
 ///////////////////////////////////////////////////////////////
@@ -28,7 +27,7 @@ router.post(
   "/newExercises",
   authUserController,
   cantEditController,
-  newExercisesController
+  newExercisesController,
 );
 
 // Para MODIFICAR un Ejercicio
@@ -37,7 +36,7 @@ router.put(
   authUserController,
   cantEditController,
   exerciseExistsController,
-  modifExercisescontroller
+  modifExercisescontroller,
 );
 
 // Para ELIMINAR un Ejercicio
@@ -46,7 +45,7 @@ router.delete(
   authUserController,
   cantEditController,
   exerciseExistsController,
-  deleteExercisescontroller
+  deleteExercisescontroller,
 );
 
 // Para visualizar todos los ejercicios
@@ -57,16 +56,16 @@ router.get(
   "/exercise/:exerciseId",
   authUserController,
   exerciseExistsController,
-  getExercisesController
+  getExercisesController,
 );
 
 // Para darle LIKE a un ejercicio
 router.post(
-  "/exercises/:exerciseId/like",
+  "/exercises/like/:entryId/",
   authUserController,
-  userExistsController,
-  exerciseExistsController,
-  favExercisesController
+  likeEntryController,
 );
+
+// Para listar los LIKE de un usuario
 
 export default router;
