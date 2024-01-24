@@ -4,7 +4,7 @@ import getExercisesController from "./getExercisesController.js";
 import likeExerciseController from "./likeExerciseController.js";
 import modifExercisescontroller from "./modifExercisescontroller.js";
 import deleteExercisescontroller from "./deleteExercisescontroller.js";
-
+import deleteExistLikeController from "./deleteExistLikeController.js";
 export {
   newExercisesController,
   listExercisesController,
@@ -12,4 +12,5 @@ export {
   likeExerciseController,
   modifExercisescontroller,
   deleteExercisescontroller,
+  deleteExistLikeController,
 };

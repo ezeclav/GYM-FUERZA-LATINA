@@ -117,3 +117,11 @@ export const notLikeError = (resourse) => {
     message: `el usuario '${resourse}' no ha dado LIKE a ningun ejercicio`,
   };
 };
+
+export const deleteLikeError = () => {
+  throw {
+    httpStatus: 409, // conflicto
+    code: "LIKE_DELETED_FAILED",
+    message: "No se encuentra el Like solicitado ",
+  };
+};
