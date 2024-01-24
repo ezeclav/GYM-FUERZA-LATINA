@@ -9,12 +9,15 @@ const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env;
 const transport = nodemailer.createTransport({
   host: SMTP_HOST,
   port: SMTP_PORT,
+  secure: true,
   auth: {
     user: SMTP_USER,
     pass: SMTP_PASS,
   },
+  tls: {
+    rejectUnauthorized: false,
+  },
 });
-
 const sendMailUtil = async (email, subject, body) => {
   try {
     const mailOptions = {

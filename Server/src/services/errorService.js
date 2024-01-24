@@ -70,14 +70,6 @@ export const deleteFileError = () => {
   };
 };
 
-export const cannotVoteOwnEntryError = () => {
-  throw {
-    httpStatus: 403,
-    code: "CANNOT_VOTE_OWN_ERROR",
-    message: "No puedes votar tu propia entrada",
-  };
-};
-
 export const favAlreadyExistsError = () => {
   throw {
     httpStatus: 409, //conflicto
@@ -115,5 +107,13 @@ export const emptyFieldExerciseError = () => {
     httpStatus: 400,
     code: "EMPTY_FIELD",
     message: "Faltan agregas campos",
+  };
+};
+
+export const notLikeError = (resourse) => {
+  throw {
+    httpStatus: 404,
+    code: "RESOURCE_NOT_FOUND",
+    message: `el usuario '${resourse}' no ha dado LIKE a ningun ejercicio`,
   };
 };

@@ -9,7 +9,7 @@ const selectAllExercisesModel = async () => {
             FROM exercises e
             LEFT JOIN like_exercises l ON l.id_like_exercise = e.id_exercise
             GROUP BY e.id_exercise
-            ORDER BY e.name DESC  
+            ORDER BY e.name ASC  
     `
   );
 

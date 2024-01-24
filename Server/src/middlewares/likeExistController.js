@@ -1,5 +1,5 @@
 import getPool from "../database/getPool.js";
-import { notFoundError } from "../services/errorService.js";
+import { notLikeError } from "../services/errorService.js";
 
 const listLikesController = async (req, res, next) => {
   try {
@@ -12,11 +12,11 @@ const listLikesController = async (req, res, next) => {
         SELECT id_like_exercise, exerciseId, userId FROM like_exercises
         WHERE userId = ?
       `,
-      [userId],
+      [userId]
     );
 
     if (!likes.length) {
-      notFoundError(`${userId}`);
+      notLikeError(`${userId}`);
     }
     res.send({
       status: "ok",

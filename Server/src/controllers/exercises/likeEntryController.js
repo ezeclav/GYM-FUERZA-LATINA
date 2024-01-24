@@ -5,7 +5,7 @@ const likeEntryController = async (req, res, next) => {
     const { exerciseId } = req.params;
     const userId = req.user.id;
     console.log(userId);
-    const like = await insertLikeModel(userId, exerciseId, new Date());
+    const like = await insertLikeModel(userId, exerciseId);
 
     res.send({
       status: "ok",

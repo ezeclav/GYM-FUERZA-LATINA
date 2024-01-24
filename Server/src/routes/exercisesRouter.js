@@ -63,14 +63,13 @@ router.get(
 
 // Para darle LIKE a un ejercicio
 router.post(
-  "/exercises/like/:exerciseId/",
+  "/exercises/like/:exerciseId",
   authUserController,
   userExistsController,
   likeEntryController
 );
 
 // Para listar los LIKE de un usuario
-
 router.get(
   "/listlikes",
   authUserController,

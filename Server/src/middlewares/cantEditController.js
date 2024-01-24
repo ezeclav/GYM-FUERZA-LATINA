@@ -15,8 +15,8 @@ const cantEditController = async (req, res, next) => {
   ////////////////// SI NO SOMOS ADMIN NO PODEMOS EDITAR NINGÚN EJERCICIO ///////////////////
   try {
     const tokenInfo = jwt.verify(authorization, process.env.SECRET);
-    if (tokenInfo.role == "admin") unauthorizedUserError();
-    console.log(tokenInfo);
+    if (tokenInfo.role !== "admin") unauthorizedUserError();
+    // console.log(tokenInfo);
     req.user = tokenInfo;
 
     next();
