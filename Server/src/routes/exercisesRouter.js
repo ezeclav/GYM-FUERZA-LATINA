@@ -70,7 +70,7 @@ router.post(
   likeExerciseController,
 );
 
-// Para listar los LIKE de un usuario
+// istar los LIKE de un usuario
 router.get("/listlikes", authUserController, likeExistController);
 
 router.delete(
