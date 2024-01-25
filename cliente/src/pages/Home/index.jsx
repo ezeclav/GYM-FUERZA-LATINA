@@ -12,7 +12,8 @@ function Home() {
         </>
       ) : (
         <>
-          <h1>Ingresa a tu cuenta por favor</h1>
+          <h2>GIMNASIOS FUERZA LATINA 🏋️‍♂️🤸‍♂️</h2>
+          <h3>Ingresa a tu cuenta por favor</h3>
         </>
       )}
     </div>
