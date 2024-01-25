@@ -30,7 +30,7 @@ router.post(
   "/newExercises",
   authUserController,
   cantEditController,
-  newExercisesController,
+  newExercisesController
 );
 
 // Para MODIFICAR un Ejercicio
@@ -39,7 +39,7 @@ router.put(
   authUserController,
   cantEditController,
   exerciseExistsController,
-  modifExercisescontroller,
+  modifExercisescontroller
 );
 
 // Para ELIMINAR un Ejercicio
@@ -48,7 +48,7 @@ router.delete(
   authUserController,
   cantEditController,
   exerciseExistsController,
-  deleteExercisescontroller,
+  deleteExercisescontroller
 );
 
 // Para visualizar todos los ejercicios
@@ -59,7 +59,7 @@ router.get(
   "/exercise/:exerciseId",
   authUserController,
   exerciseExistsController,
-  getExercisesController,
+  getExercisesController
 );
 
 // Para darle LIKE a un ejercicio
@@ -67,16 +67,17 @@ router.post(
   "/exercises/like/:exerciseId",
   authUserController,
   userExistsController,
-  likeExerciseController,
+  likeExerciseController
 );
 
-// istar los LIKE de un usuario
+// Listar los LIKE de un usuario
 router.get("/listlikes", authUserController, likeExistController);
 
+// Para quitarle el LIKE a un ejercicio
 router.delete(
   "/dislike/:exerciseId",
   authUserController,
-  deleteExistLikeController,
+  deleteExistLikeController
 );
 
 export default router;

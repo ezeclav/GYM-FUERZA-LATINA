@@ -55,6 +55,7 @@ Pueden ver la landing de la plataforma donde podrán registrarse o hacer login.
 - `POST: /exercises/like/:exerciseId` (darle LIKE a un ejercicio)
 - `DELETE: /exercises/dislike/:exerciseId` (quitarle LIKE a un ejercicio)
 - `GET: /listlikes` (enlistar todos los ejercicios favoritos que el usuario dió LIKE)
+- `DELETE: /dislike/:exerciseId` (quitarle el LIKE a un ejercicio)
 
 - ## Pasos para hacer la instalación
 
