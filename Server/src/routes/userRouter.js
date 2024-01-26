@@ -17,7 +17,7 @@ import userExistsController from "../middlewares/userExistsController.js";
 
 //proceso de registro, donde se envía x mail el codigo de registro
 router.post("/users/register", newUserController);
-router.get("/users/validate/:registrationCode", validateUserController);
+router.put("/users/validate/:registrationCode", validateUserController);
 
 //proceso de logueo
 router.post("/users/login", loginUserController);
