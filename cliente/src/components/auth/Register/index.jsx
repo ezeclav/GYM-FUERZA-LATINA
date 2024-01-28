@@ -13,7 +13,8 @@ const Register = () => {
     confirmPassword: "",
   });
   const [showModal, setShowModal] = useState(false);
-  const [error, setError] = useState("");
+  const [errorConfirmPassword, setErrorConfirmPassword] = useState("");
+  const [errorCredentials, setErrorCredentials] = useState("");
 
   const navigate = useNavigate();
 
@@ -27,10 +28,22 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorConfirmPassword("");
+    setErrorCredentials("");
 
     // Verificar que las contraseñas sean iguales
     if (credentials.password !== credentials.confirmPassword) {
-      setError("Las contraseñas no coinciden");
+      setErrorConfirmPassword("Las contraseñas no coinciden");
+      return;
+    }
+    // Verificar que estén todos los campos completados
+    if (
+      !credentials.username ||
+      !credentials.email ||
+      !credentials.password ||
+      !credentials.confirmPassword
+    ) {
+      setErrorCredentials("por favor completa todos los campos requeridos");
       return;
     }
 
@@ -45,7 +58,7 @@ const Register = () => {
           password: "",
           confirmPassword: "",
         });
-        setError("");
+        setErrorConfirmPassword("");
       }
     } catch (error) {
       console.log(error);
@@ -102,7 +115,10 @@ const Register = () => {
           />
         </label>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {errorConfirmPassword && (
+          <p style={{ color: "red" }}>{errorConfirmPassword}</p>
+        )}
+        {errorCredentials && <p style={{ color: "red" }}>{errorCredentials}</p>}
 
         <button type="submit">Ingresar</button>
       </form>

@@ -16,7 +16,8 @@ const Login = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [showPassRecovery, setshowPassRecovery] = useState(false);
-  const [err, setErr] = useState(null);
+  const [errorCredentials, setErrorCredentials] = useState(null);
+  const [errorValues, setErrorValues] = useState("");
 
   const { login } = useContext(AuthContext);
 
@@ -30,13 +31,20 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorValues("");
+
+    // Verificar que estén todos los campos completados
+    if (!credentials.email || !credentials.password) {
+      setErrorValues("por favor completa todos los campos requeridos");
+      return;
+    }
 
     try {
       const response = await axios.post("api/users/login", credentials);
       login(response.data.data.token);
     } catch (error) {
       setShowModal(true);
-      setErr(error.response.data.message);
+      setErrorCredentials(error.response.data.message);
     }
   };
 
@@ -48,7 +56,7 @@ const Login = () => {
     setShowModal(false);
   };
 
-  console.log(err);
+  // console.log(err);
   return (
     <>
       <h2>Ingresar</h2>
@@ -73,6 +81,9 @@ const Login = () => {
             onChange={handleChange}
           />
         </label>
+
+        {errorValues && <p style={{ color: "red" }}>{errorValues}</p>}
+
         <button type="submit">Ingresar</button>
         <a href="#" onClick={() => setshowPassRecovery(true)}>
           Olvidaste tu contraseña?
@@ -85,7 +96,10 @@ const Login = () => {
       )}
       {showModal && (
         <Modal onClick={handleModalClose}>
-          <Error errorMessage={err} closeModal={handleModalClose} />
+          <Error
+            errorMessage={errorCredentials}
+            closeModal={handleModalClose}
+          />
         </Modal>
       )}
     </>
