@@ -8,12 +8,12 @@ function EditUserName() {
   const [name, setName] = useState(user.username);
 
   const handleNameChange = (event) => {
-    setName(event.target.value);
+    setName(event.target.name.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
+    console.log(event.target.name.value);
   };
 
   return (

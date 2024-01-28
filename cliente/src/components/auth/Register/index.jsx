@@ -3,13 +3,17 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Modal from "../../Modal";
 
+import "./Register.css";
+
 const Register = () => {
   const [credentials, setCredentials] = useState({
     username: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
   const [showModal, setShowModal] = useState(false);
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,6 +28,12 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Verificar que las contraseñas sean iguales
+    if (credentials.password !== credentials.confirmPassword) {
+      setError("Las contraseñas no coinciden");
+      return;
+    }
+
     try {
       const response = await axios.post("api/users/register", credentials);
       console.log(response.data.status);
@@ -33,7 +43,9 @@ const Register = () => {
           username: "",
           email: "",
           password: "",
+          confirmPassword: "",
         });
+        setError("");
       }
     } catch (error) {
       console.log(error);
@@ -79,6 +91,19 @@ const Register = () => {
             onChange={handleChange}
           />
         </label>
+        <label htmlFor="">
+          Confirmar Contraseña
+          <input
+            type="password"
+            name="confirmPassword"
+            value={credentials.confirmPassword}
+            placeholder="Confirma la contraseña"
+            onChange={handleChange}
+          />
+        </label>
+
+        {error && <p style={{ color: "red" }}>{error}</p>}
+
         <button type="submit">Ingresar</button>
       </form>
       {showModal && (

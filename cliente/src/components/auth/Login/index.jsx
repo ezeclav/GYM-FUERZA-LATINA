@@ -6,6 +6,8 @@ import Modal from "../../Modal";
 import Error from "../../Error";
 import PassRecovery from "../../user/PassRecovery";
 
+import "./Login.css";
+
 const Login = () => {
   const [credentials, setCredentials] = useState({
     email: "",

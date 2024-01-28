@@ -23,12 +23,7 @@ router.put("/users/validate/:registrationCode", validateUserController);
 router.post("/users/login", loginUserController);
 
 //obtener el perfil público de un usuario
-router.get(
-  "/users/:userId",
-  authUserController,
-  userExistsController,
-  getUserProfileController
-);
+router.get("/users/:userId", userExistsController, getUserProfileController);
 
 //obtener el perfil privado del usuario logueado
 router.get(
