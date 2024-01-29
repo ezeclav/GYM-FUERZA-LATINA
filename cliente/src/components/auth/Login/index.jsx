@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../../context/AuthContext.jsx";
@@ -64,6 +63,7 @@ const Login = () => {
         <label htmlFor="">
           Correo
           <input
+            required
             type="email"
             name="email"
             value={credentials.email}
@@ -74,6 +74,7 @@ const Login = () => {
         <label htmlFor="">
           Contraseña
           <input
+            required
             type="password"
             name="password"
             value={credentials.password}

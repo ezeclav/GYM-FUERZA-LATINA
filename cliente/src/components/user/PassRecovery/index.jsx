@@ -5,22 +5,44 @@ import "./PassRecovery.css";
 
 function PassRecovery({ handleModal }) {
   const [emailForReset, setEmailForReset] = useState("");
+  const [resetCode, setResetCode] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [resetMessage, setResetMessage] = useState("");
+  const [resetPhase, setResetPhase] = useState("request"); // Agregamos un estado para controlar la fase
 
   const handlePasswordReset = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/users/password/recover", { email: emailForReset });
-      setResetMessage(
-        "Se te ha enviado un email con las instrucciones para restablecer tu contraseña."
-      );
+      if (resetPhase === "request") {
+        // Si estamos en la fase de enviar solicitud
+        await axios.post("/api/users/password/recover", {
+          email: emailForReset,
+        });
+        setResetMessage(
+          "Se te ha enviado un email con las instrucciones para restablecer tu contraseña."
+        );
+        setResetPhase("reset"); // Cambiamos a la fase de restablecer contraseña
+      } else {
+        // Si estamos en la fase de restablecer contraseña
+        await axios.put("/api/users/password", {
+          email: emailForReset,
+          recoverPassCode: resetCode,
+          newPassword: newPassword,
+        });
+        setResetMessage("La contraseña se ha restablecido con éxito.");
+        // Limpiamos los campos después de restablecer la contraseña
+        setEmailForReset("");
+        setResetCode("");
+        setNewPassword("");
+        setResetPhase("request"); // Volver a la fase de enviar solicitud
+      }
     } catch (error) {
       console.error(
-        "Error al enviar solicitud de restablecimiento de contraseña:",
+        "Error al enviar solicitud o restablecer contraseña:",
         error
       );
       setResetMessage(
-        "Error al enviar la solicitud. Por favor, inténtalo de nuevo."
+        "Error al enviar la solicitud o restablecer la contraseña. Por favor, inténtalo de nuevo."
       );
     }
   };
@@ -42,8 +64,47 @@ function PassRecovery({ handleModal }) {
               />
             </label>
           </div>
-          <button type="submit">Enviar Solicitud</button>
+
+          {resetPhase === "reset" && (
+            <>
+              <div>
+                <label htmlFor="reset-code">
+                  Código de Recuperación
+                  <input
+                    required
+                    type="text"
+                    id="reset-code"
+                    value={resetCode}
+                    onChange={(e) => setResetCode(e.target.value)}
+                    placeholder="Ingresa código"
+                  />
+                </label>
+              </div>
+
+              <div>
+                <label htmlFor="new-password">
+                  Nueva Contraseña
+                  <input
+                    required
+                    type="password"
+                    id="new-password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    placeholder="Ingresa nueva contraseña"
+                  />
+                </label>
+              </div>
+            </>
+          )}
+
+          <button type="submit">
+            {resetPhase === "request"
+              ? "Enviar Solicitud"
+              : "Restablecer Contraseña"}
+          </button>
+
           <button onClick={handleModal}>Cancelar</button>
+
           {resetMessage && (
             <>
               <p className="reset-message">{resetMessage}</p>
