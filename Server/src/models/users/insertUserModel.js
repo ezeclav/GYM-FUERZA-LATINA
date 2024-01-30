@@ -45,7 +45,7 @@ const insertUserModel = async (username, email, password, registrationCode) => {
             <a href="http://localhost:3001/auth/activate/${registrationCode}">Activar mi cuenta</a>
     `;
 
-  await sendMailUtil(email, emailSubject, emailBody);
+  //await sendMailUtil(email, emailSubject, emailBody);
 
   const hashedPassword = await bcrypt.hash(password, 10);
 

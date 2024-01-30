@@ -20,6 +20,12 @@ function Navbar() {
             <li onClick={logout}>
               <Link to="/">Salir</Link>
             </li>
+            <li>
+              <Link to="/NewExercise">Crear Nuevo Ejercicio</Link>
+            </li>
+            <li>
+              <Link to="/Exercises">Ejercicios</Link>
+            </li>
           </>
         ) : (
           // Usuario No Logueado
