@@ -41,6 +41,7 @@ Pueden ver la landing de la plataforma donde podrán registrarse o hacer login.
 - `PUT: /users/password` (actualización de contraseña de usuario)
 - `GET: /users/:userId` (obtener el perfil público de un usuario)
 - `GET: /users` (obtener el perfil privado del usuario logueado)
+- `PUT: /users/update` (modificar el nombre de usuario logueado)
 
 - Una vez creado los usuarios, el responsable de la BBDD asignará el rol `ADMINISTRADOR` manualmente dentro del Workbench.
 

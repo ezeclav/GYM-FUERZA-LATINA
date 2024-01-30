@@ -125,3 +125,10 @@ export const deleteLikeError = () => {
     message: "No se encuentra el Like solicitado ",
   };
 };
+export const emptyUserNameError = () => {
+  throw {
+    httpStatus: 400,
+    code: "EMPTY_FIELD",
+    message: "Falta agregar el Nombre de Usuario",
+  };
+};

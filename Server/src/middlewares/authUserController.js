@@ -12,18 +12,15 @@ const authUserController = (req, res, next) => {
       notAuthenticatedError();
     }
 
-    let tokenInfo;
-
     try {
-      tokenInfo = jwt.verify(authorization, process.env.SECRET);
+      const tokenInfo = jwt.verify(authorization, process.env.SECRET);
+      req.user = tokenInfo;
+      // console.log(req.user);
+
+      next();
     } catch (error) {
       invalidCredentialsError();
     }
-
-    req.user = tokenInfo;
-    console.log(req.user);
-
-    next();
   } catch (error) {
     next(error);
   }
