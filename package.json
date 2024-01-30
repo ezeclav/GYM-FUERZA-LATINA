@@ -5,11 +5,10 @@
   "name": "proyecto3front",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "cd server && npm i && cd ../cliente && npm i",
-    "start": "concurrently \"cd server && npm run dev\"  \"cd cliente && npm run dev\" ",
+    "start": "concurrently \"cd Server && npm run dev\"  \"cd cliente && npm run dev\" ",
     "initDb": "cd server && npm run initDB",
     "build": "cd cliente && npm run build"
   },

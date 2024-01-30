@@ -4,6 +4,7 @@ import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import AuthRoutes from "./routes/AuthRoutes";
 import UserRoutes from "./routes/UserRoutes";
+import NewExercises from "./pages/NewExercise/index"
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "user/*",
         element: <UserRoutes />,
+      },
+      {
+        path: "/newExercise",
+        element: <NewExercises />,
       },
     ],
   },
