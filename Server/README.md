@@ -100,3 +100,7 @@ _palabra del Token_
 _Puerto del servidor_
 
 `PORT=`
+
+_Direccion y puerto del Front_
+
+`ACTIVATION_URL`

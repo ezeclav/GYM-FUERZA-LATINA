@@ -17,14 +17,14 @@ function Navbar() {
             <li>
               <Link to="user/profile">Perfil de usuario</Link>
             </li>
-            <li onClick={logout}>
-              <Link to="/">Salir</Link>
-            </li>
             <li>
               <Link to="/NewExercise">Crear Nuevo Ejercicio</Link>
             </li>
             <li>
               <Link to="/Exercises">Ejercicios</Link>
+            </li>
+            <li onClick={logout}>
+              <Link to="/">Salir</Link>
             </li>
           </>
         ) : (

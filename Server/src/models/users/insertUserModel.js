@@ -1,12 +1,16 @@
 import bcrypt from "bcrypt";
 import getPool from "../../database/getPool.js";
+import dotenv from "dotenv";
 
 import sendMailUtil from "../../util/sendMailUtil.js";
-
 import {
   emailAlReadyRegistratedError,
   userAlReadyRegistratedError,
 } from "../../services/errorService.js";
+
+dotenv.config();
+
+const { ACTIVATION_URL } = process.env;
 
 const insertUserModel = async (username, email, password, registrationCode) => {
   const pool = await getPool();
@@ -37,15 +41,17 @@ const insertUserModel = async (username, email, password, registrationCode) => {
 
   const emailSubject = "Activa tu usuario en GIMNASIOS FUERZA LATINA 🏋️‍♂️🤸‍♂️";
 
+  const activationUrl = `${ACTIVATION_URL}`;
+
   const emailBody = `
             ¡HOLA ${username}!
 
             Gracias por registrarte en GIMNASIOS FUERZA LATINA 🏋️‍♂️🤸‍♂️. Para activar la cuenta, haga click en el siguiente enlace:
 
-            <a href="http://localhost:3001/auth/activate/${registrationCode}">Activar mi cuenta</a>
+            <a href="${activationUrl}auth/activate/${registrationCode}">Activar mi cuenta</a>
     `;
 
-  //await sendMailUtil(email, emailSubject, emailBody);
+  await sendMailUtil(email, emailSubject, emailBody);
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
