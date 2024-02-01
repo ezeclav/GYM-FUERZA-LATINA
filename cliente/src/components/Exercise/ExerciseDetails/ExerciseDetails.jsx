@@ -2,9 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import axios from "axios";
-import ExercisePhoto from "../ExercisePhoto";
+//import ExercisePhoto from "../ExercisePhoto"; <---------- TIRA ERROR
 import Modal from "../../Modal";
-import ExerciseLike from '../ExerciseLike';
+//import ExerciseLike from '../ExerciseLike'; <------------ TIRA ERROR
 import "./ExerciseDetails.css";
 
 const ExerciseDetails = () => {
@@ -20,7 +20,7 @@ const ExerciseDetails = () => {
   useEffect(() => {
     const fetchExercises = async () => {
       try {
-        const response = await axios.get(`/api/exercises/${exerciseId}`);
+        const response = await axios.get(`/api/exercisesId/${exerciseId}`);
         setExercise(response.data.data.exercise);
       } catch (err) {
         setError(err);
@@ -52,10 +52,10 @@ const ExerciseDetails = () => {
       {exercise && (
         <>
           <h2 className="exercise-nombre">Nombre: {nombre}</h2>
-          <h3 className="entry-descripcion">Descripcion: {descripcion}</h3>
-          <p className="entry-tipologia">Tipología: {tipologia}</p>
-          <p className="entry-grupoMuscular">Grupo Muscular: {grupoMuscular}</p>
-          <p className="entry-equipo">Equipo: {equipo}</p>
+          <h3 className="exercise-descripcion">Descripcion: {descripcion}</h3>
+          <p className="exercise-tipologia">Tipología: {tipologia}</p>
+          <p className="exercise-grupoMuscular">Grupo Muscular: {grupoMuscular}</p>
+          <p className="exercise-equipo">Equipo: {equipo}</p>
           <ExerciseLike exerciseId={exerciseId}/>
         </>
       )}
