@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./Navbar.css";
-import NewExercisePage from "../../pages/NewExercise/NewExercise"
+import NewExercisePage from "../../pages/NewExercise/NewExercise";
 
 function Navbar() {
   const { isAuthenticated, logout } = useContext(AuthContext);
