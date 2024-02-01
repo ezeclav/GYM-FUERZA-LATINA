@@ -38,7 +38,7 @@ function Navbar() {
               <Link to="/auth/register">Registrarse</Link>
             </li>
             <li onClick={NewExercisePage}>
-              <Link to="/NewExercise">Crear Nuevo Ejercicio</Link>
+              <Link to="/NewExercise">Crear Nuevo Ejercicio</Link> 
             </li>
           </>
         )}

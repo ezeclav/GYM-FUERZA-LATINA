@@ -22,7 +22,7 @@ function ExercisePhoto({ exerciseId, onClose, onUpload }) {
     try {
       const token = Auth.getToken();
       const response = await axios.post(
-        `/api/exercises/${exerciseId}/fotos`,
+       // `/api/exercises/${exerciseId}/fotos`,
         formData,
         {
           headers: {
@@ -41,7 +41,7 @@ function ExercisePhoto({ exerciseId, onClose, onUpload }) {
 
   return (
     <div className="exercise-details-container ">
-      <h2 className="exercise-title">Agregar Foto</h2>
+      <h3 className="exercise-title">Agregar Foto</h3>
       <input type="file" accept="image/*" onChange={handleFileChange} />
       <button onClick={handleUpload}>Subir Foto</button>
       <button onClick={onClose}>Cancelar</button>

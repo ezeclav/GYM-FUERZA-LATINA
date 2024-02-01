@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import auth from '../../../utils/auth';
-import ExercisePhoto from '../ExercisePhoto/ExercisePhoto';
 import './NewExercise.css'; 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -9,7 +8,6 @@ function NewExercise() {
   const [formData, setFormData] = useState({
     nombre: '',
     descripcion: '',
-    foto: <ExercisePhoto />,
     tipologia: '',
     grupoMuscular: '',
     equipo: ''
@@ -30,7 +28,6 @@ function NewExercise() {
     const formDataToSend = new FormData();
     formDataToSend.append('Nombre', formData.nombre);
     formDataToSend.append('Descripción', formData.descripcion);
-    formDataToSend.append('Foto', formData.foto);
     formDataToSend.append('Tipología', formData.tipologia);
     formDataToSend.append('Grupo Muscular', formData.grupoMuscular);
     formDataToSend.append('Equipo', formData.equipo);
@@ -55,6 +52,7 @@ function NewExercise() {
     <div className="new-exercise-form">
       <h2>Crea un nuevo ejercicio</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
+
         <div className="form-group">
           <label htmlFor="nombre">Nombre:</label>
           <input
@@ -62,18 +60,6 @@ function NewExercise() {
             id="nombre"
             name="nombre"
             value={formData.nombre}
-            onChange={handleChange}
-            className="form-control"
-          />
-        </div>
-        
-        <div className="form-group">
-          <label htmlFor="Foto">Foto:</label>
-          <img
-            src={<ExercisePhoto />}
-            type="img"
-            alt="foto"
-            value={formData.foto}
             onChange={handleChange}
             className="form-control"
           />
@@ -92,14 +78,34 @@ function NewExercise() {
 
         <div className="form-group">
           <label htmlFor="Tipologia">Tipología:</label>
-          <input
-            type="text"
-            id="tipologia"
-            name="tipologia"
-            value={formData.tipologia}
-            onChange={handleChange}
-            className="form-control"
-          />
+
+          <input 
+          type="radio" 
+          name="tipologia" 
+          id="tipologia" 
+          value={formData.tipologia}
+          onChange={handleChange}
+          className="form-control"
+          /> Fuerza
+          
+          <input 
+          type="radio" 
+          name="tipologia" 
+          id="tipologia" 
+          value={formData.tipologia}
+          onChange={handleChange}
+          className="form-control"
+          /> Potencia
+
+          <input 
+          type="radio" 
+          name="tipologia" 
+          id="tipologia" 
+          value={formData.tipologia}
+          onChange={handleChange}
+          className="form-control" 
+          /> Resistencia
+
         </div>
 
         <div className="form-group">
@@ -113,6 +119,19 @@ function NewExercise() {
             className="form-control"
           />
         </div>
+
+        <div className="form-group">
+          <label htmlFor="nombre">Equipo:</label>
+          <input
+            type="text"
+            id="equipo"
+            name="equipo"
+            value={formData.nombre}
+            onChange={handleChange}
+            className="form-control"
+          />
+        </div>
+        
         <button type="submit" className="btn btn-primary">Crear Ejercicio</button>
         <Link to="/">Cancelar</Link>
       </form>
