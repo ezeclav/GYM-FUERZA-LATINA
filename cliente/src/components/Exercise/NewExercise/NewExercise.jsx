@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import auth from '../../../utils/auth';
+import ExercisePhoto from '../ExercisePhoto/ExercisePhoto';
 import './NewExercise.css'; 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -8,7 +9,7 @@ function NewExercise() {
   const [formData, setFormData] = useState({
     nombre: '',
     descripcion: '',
-    foto: '',
+    foto: <ExercisePhoto />,
     tipologia: '',
     grupoMuscular: '',
     equipo: ''
@@ -36,7 +37,7 @@ function NewExercise() {
 
     const token = auth.getToken()
     try {
-      const response = await axios.post('api/newExercises', formDataToSend, {
+      const response = await axios.post('api/newExercise', formDataToSend, {
         headers: {
           Authorization: `Bearer ${token}`,
         }
@@ -69,7 +70,7 @@ function NewExercise() {
         <div className="form-group">
           <label htmlFor="Foto">Foto:</label>
           <img
-            src={imageUrl}
+            src={<ExercisePhoto />}
             type="img"
             alt="foto"
             value={formData.foto}

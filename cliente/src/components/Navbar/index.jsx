@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./Navbar.css";
+import NewExercisePage from "../../pages/NewExercise/NewExercise"
 
 function Navbar() {
   const { isAuthenticated, logout } = useContext(AuthContext);
@@ -17,11 +18,8 @@ function Navbar() {
             <li>
               <Link to="user/profile">Perfil de usuario</Link>
             </li>
-            <li>
+            <li onClick={NewExercisePage}>
               <Link to="/NewExercise">Crear Nuevo Ejercicio</Link>
-            </li>
-            <li>
-              <Link to="/Exercises">Ejercicios</Link>
             </li>
             <li onClick={logout}>
               <Link to="/">Salir</Link>
@@ -38,6 +36,9 @@ function Navbar() {
             </li>
             <li>
               <Link to="/auth/register">Registrarse</Link>
+            </li>
+            <li onClick={NewExercisePage}>
+              <Link to="/NewExercise">Crear Nuevo Ejercicio</Link>
             </li>
           </>
         )}
