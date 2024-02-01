@@ -3,8 +3,8 @@ import "./ExerciseCard.css";
 
 function ExerciseCard({ nombre, descripcion, foto, tipologia, grupoMuscular, equipo }) {
   return (
-    <div className="entry-list-card">
-      <div className="entry-details">
+    <div className="exercise-list-card">
+      <div className="exercise-details">
         <Link to={`/exercises/${id}`} className="exercise-link">
           <h3 className="exercise-nombre">{nombre}</h3>
           <p className="exercise-foto">{foto}</p>

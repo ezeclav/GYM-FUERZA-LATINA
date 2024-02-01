@@ -2,14 +2,13 @@ import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import axios from "axios";
-//import ExercisePhoto from "../ExercisePhoto"; <---------- TIRA ERROR
+//import ExercisePhoto from "../ExercisePhoto"; <---------- TIRA ERROR. POR SOLUCIONAR
 import Modal from "../../Modal";
-//import ExerciseLike from '../ExerciseLike'; <------------ TIRA ERROR
+//import ExerciseLike from '../ExerciseLike'; <------------ TIRA ERROR. POR SOLUCIONAR
 import "./ExerciseDetails.css";
 
 const ExerciseDetails = () => {
   const { exerciseId } = useParams();
-  const { user } = useContext(AuthContext);
   const [exercise, setExercise] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,7 +19,7 @@ const ExerciseDetails = () => {
   useEffect(() => {
     const fetchExercises = async () => {
       try {
-        const response = await axios.get(`/api/exercisesId/${exerciseId}`);
+        const response = await axios.get(`/api/exercises/${exerciseId}`);
         setExercise(response.data.data.exercise);
       } catch (err) {
         setError(err);
@@ -42,7 +41,7 @@ const ExerciseDetails = () => {
     return <div>Cargando...</div>;
   }
 
-  const { nombre, foto, descripcion, tipologia, grupoMuscular, equipo } = exercise;
+  const { nombre, fotos, descripcion, tipologia, grupoMuscular, equipo } = exercise;
 
 
   return (
@@ -59,9 +58,9 @@ const ExerciseDetails = () => {
           <ExerciseLike exerciseId={exerciseId}/>
         </>
       )}
-      <div className="foto">
-        {foto &&
-          foto.map((foto) => (
+      <div className="foto-list">
+        {fotos &&
+          fotos.map((foto) => (
             <img
               key={foto.id}
               src={foto.name}
@@ -71,14 +70,6 @@ const ExerciseDetails = () => {
           ))}
 
       </div>
-      {user.id === userId && (
-        <button
-          onClick={() => setShowPhotoModal(true)}
-          className="add-exercise-button"
-        >
-          Agregar ejercicio
-        </button>
-      )}
       {showPhotoModal && (
         <Modal>
           <ExercisePhoto
