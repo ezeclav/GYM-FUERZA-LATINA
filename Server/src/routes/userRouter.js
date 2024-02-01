@@ -15,6 +15,7 @@ import {
 
 import authUserController from "../middlewares/authUserController.js";
 import userExistsController from "../middlewares/userExistsController.js";
+import verifUsernameController from "../middlewares/verifUsernameController.js";
 
 //proceso de registro, donde se envía x mail el codigo de registro
 router.post("/users/register", newUserController);
@@ -42,5 +43,8 @@ router.put("/users/password", editUserPasswordController);
 
 //modifica o edita el username del usuario logueado
 router.put("/users/update", authUserController, editUserNameController);
+
+//para verificar que el username no esté en uso
+router.post("/check/users", verifUsernameController);
 
 export default router;

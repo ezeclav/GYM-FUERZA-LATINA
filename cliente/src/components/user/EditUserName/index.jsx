@@ -8,15 +8,32 @@ function EditUserName() {
   const { user, updateUser } = useContext(AuthContext);
   const [username, setUsername] = useState(user.username);
   const [newUsername, setNewUsername] = useState("");
+  const [isUsernameTaken, setIsUsernameTaken] = useState(false);
 
-  const handleNameChange = (event) => {
-    setUsername(event.target.value);
+  const handleNameChange = async (event) => {
+    const newUsernameValue = event.target.value;
+    setUsername(newUsernameValue);
+
+    // Verifica si el nuevo nombre de usuario ya está en uso
+    try {
+      const response = await axios.post("/api/check/users", {
+        username: newUsernameValue,
+      });
+      setIsUsernameTaken(response.data.isTaken);
+    } catch (error) {
+      console.error("Error al verificar el nombre de usuario:", error);
+    }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("valor reemplazado:", username);
     setNewUsername("");
+
+    // Si el nuevo nombre de usuario ya está en uso, no realiza la actualización
+    if (isUsernameTaken) {
+      console.error("Nombre de usuario ya está en uso.");
+      return;
+    }
 
     const token = Auth.getToken();
 
@@ -41,7 +58,6 @@ function EditUserName() {
         console.error("Error al actualizar el nombre de usuario");
       }
     } catch (error) {
-      // console.log(userId);
       console.error("Error en la solicitud API:", error);
     }
   };
@@ -59,6 +75,7 @@ function EditUserName() {
             className="name-input"
           />
         </div>
+        {isUsernameTaken && <p>Nombre de usuario ya está en uso.</p>}
         {newUsername && <p>{newUsername}</p>}
         <button type="submit" className="save-button">
           Guardar
