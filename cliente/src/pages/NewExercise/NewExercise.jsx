@@ -6,7 +6,6 @@ const NewExercisePage = () => {
   return (
     <div>
       <NewExercise />
-      <ExercisePhoto />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import auth from '../../../utils/auth';
+import ExercisePhoto from '../ExercisePhoto/ExercisePhoto';
 import './NewExercise.css'; 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -65,6 +66,8 @@ function NewExercise() {
           />
         </div>
 
+        <ExercisePhoto />
+
         <div className="form-group">
           <label htmlFor="Descripcion">Descripción: </label>
           <textarea
@@ -86,6 +89,7 @@ function NewExercise() {
           value={formData.tipologia}
           onChange={handleChange}
           className="form-control"
+          checked
           /> Fuerza
           
           <input 
@@ -138,3 +142,4 @@ function NewExercise() {
 }
 
 export default NewExercise;
+
