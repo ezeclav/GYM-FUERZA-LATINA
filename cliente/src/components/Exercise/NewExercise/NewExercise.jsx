@@ -114,7 +114,6 @@ function NewExercise() {
             type="text"
             id="grupomuscular"
             name="grupomuscular"
-            value={formData.grupoMuscular}
             onChange={handleChange}
             className="form-control"
           />
@@ -126,7 +125,6 @@ function NewExercise() {
             type="text"
             id="equipo"
             name="equipo"
-            value={formData.nombre}
             onChange={handleChange}
             className="form-control"
           />
