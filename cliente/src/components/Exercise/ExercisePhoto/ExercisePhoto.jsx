@@ -22,7 +22,7 @@ function ExercisePhoto({ exerciseId, onClose, onUpload }) {
     try {
       const token = Auth.getToken();
       const response = await axios.post(
-       // `/api/exercises/${exerciseId}/fotos`,
+        `/api/exercises/${exerciseId}/fotos`,
         formData,
         {
           headers: {
