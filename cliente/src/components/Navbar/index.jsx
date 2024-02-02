@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./Navbar.css";
@@ -6,43 +6,74 @@ import NewExercisePage from "../../pages/NewExercise/NewExercise";
 
 function Navbar() {
   const { isAuthenticated, logout } = useContext(AuthContext);
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Función para cerrar el menú
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <nav>
+    <nav className="navbar">
       <ul>
         {isAuthenticated ? (
           // Usuario Logueado
-          <>
+          <div className={`nav_items ${isOpen && "open"}`}>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={closeMenu}>
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="user/profile">Perfil de usuario</Link>
+              <Link to="user/profile" onClick={closeMenu}>
+                Perfil de usuario
+              </Link>
             </li>
             <li onClick={NewExercisePage}>
-              <Link to="/NewExercise">Crear Nuevo Ejercicio</Link>
+              <Link to="/NewExercise" onClick={closeMenu}>
+                Crear Nuevo Ejercicio
+              </Link>
             </li>
             <li onClick={logout}>
-              <Link to="/">Salir</Link>
+              <Link to="/" onClick={closeMenu}>
+                Salir
+              </Link>
             </li>
-          </>
+          </div>
         ) : (
           // Usuario No Logueado
-          <>
+          <div className={`nav_items ${isOpen && "open"}`}>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={closeMenu}>
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/auth/login">Ingresar</Link>
+              <Link to="/auth/login" onClick={closeMenu}>
+                Ingresar
+              </Link>
             </li>
             <li>
-              <Link to="/auth/register">Registrarse</Link>
+              <Link to="/auth/register" onClick={closeMenu}>
+                Registrarse
+              </Link>
             </li>
             <li onClick={NewExercisePage}>
-              <Link to="/NewExercise">Crear Nuevo Ejercicio</Link> 
+              <Link to="/NewExercise" onClick={closeMenu}>
+                Crear Nuevo Ejercicio
+              </Link>
             </li>
-          </>
+          </div>
         )}
       </ul>
+      <div
+        className={`nav_toggle ${isOpen && "open"}`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </nav>
   );
 }
