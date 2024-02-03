@@ -58,11 +58,6 @@ function Navbar() {
                 Registrarse
               </Link>
             </li>
-            <li onClick={NewExercisePage}>
-              <Link to="/NewExercise" onClick={closeMenu}>
-                Crear Nuevo Ejercicio
-              </Link>
-            </li>
           </div>
         )}
       </ul>

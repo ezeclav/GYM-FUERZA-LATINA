@@ -1,7 +1,7 @@
 import server from "./src/server.js";
 
-console.log(">>>>>>", process.env.PORT )
-console.log(">>>>>>", process.env.MYSQL_HOST )
+console.log(">>>>>>", process.env.PORT);
+console.log(">>>>>>", process.env.MYSQL_HOST);
 
 const PORT = process.env.PORT || 3050;
 
