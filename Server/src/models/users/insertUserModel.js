@@ -19,7 +19,7 @@ const insertUserModel = async (username, email, password, registrationCode) => {
     `
             SELECT id_user FROM users WHERE username = ?
         `,
-    [username]
+    [username],
   );
 
   if (user.length) {
@@ -30,7 +30,7 @@ const insertUserModel = async (username, email, password, registrationCode) => {
     `
             SELECT id_user FROM users WHERE email = ?
         `,
-    [email]
+    [email],
   );
 
   if (user.length) {
@@ -42,7 +42,7 @@ const insertUserModel = async (username, email, password, registrationCode) => {
   const emailSubject = "Activa tu usuario en GIMNASIOS FUERZA LATINA 🏋️‍♂️🤸‍♂️";
 
   const activationUrl = `${ACTIVATION_URL}`;
-
+  console.log(activationUrl);
   const emailBody = `
             ¡HOLA ${username}!
 
@@ -60,7 +60,7 @@ const insertUserModel = async (username, email, password, registrationCode) => {
             INSERT INTO users (username, email, password, registrationCode)
             VALUES (?,?,?,?)
         `,
-    [username, email, hashedPassword, registrationCode]
+    [username, email, hashedPassword, registrationCode],
   );
 };
 

@@ -6,7 +6,7 @@ const insertExcerciseModel = async (
   typology,
   muscle_group,
   equipment,
-  userId
+  userId,
 ) => {
   const pool = await getPool();
 
@@ -15,10 +15,10 @@ const insertExcerciseModel = async (
             INSERT INTO exercises (name, description, typology, muscle_group, equipment, userId)
             VALUES (?,?,?,?,?,?)
         `,
-    [name, description, typology, muscle_group, equipment, userId]
+    [name, description, typology, muscle_group, equipment, userId],
   );
 
-  // console.log(result);
+  console.log(result);
 
   const { insertId } = result;
 

@@ -22,14 +22,14 @@ function ExercisePhoto({ exerciseId, onUpload }) {
     try {
       const token = Auth.getToken();
       const response = await axios.post(
-        `/api/exercises/${exerciseId}`,
+        `api/exercises/${exerciseId}`,
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: token,
             "Content-Type": "multipart/form-data",
           },
-        }
+        },
       );
       console.log(response);
       onUpload();
