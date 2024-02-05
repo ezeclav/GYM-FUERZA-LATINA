@@ -1,20 +1,23 @@
 import updateUserPassModel from "../../models/users/updateUserPassModel.js";
 
-const editUserPasswordController = async (req,res,next) => {
-    try {
-        
-        const { email, recoverPassCode, newPassword } = req.body;
+import validateSchemaUtil from "../../util/validateSchemaUtil.js";
+import editUserPassSchema from "../../schemas/users/editUserPassSchema.js";
 
-        await updateUserPassModel(email, recoverPassCode, newPassword);
+const editUserPasswordController = async (req, res, next) => {
+  try {
+    const { email, recoverPassCode, newPassword } = req.body;
 
-        res.send({
-            status: 'ok',
-            message: 'Contraseña actualizada'
-        });
+    await validateSchemaUtil(editUserPassSchema, req.body);
 
-    } catch (error) {
-        next(error);        
-    }
-}
+    await updateUserPassModel(email, recoverPassCode, newPassword);
+
+    res.send({
+      status: "ok",
+      message: "Contraseña actualizada",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 export default editUserPasswordController;

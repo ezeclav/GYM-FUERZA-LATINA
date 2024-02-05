@@ -9,9 +9,11 @@ function PassRecovery({ handleModal }) {
   const [newPassword, setNewPassword] = useState("");
   const [resetMessage, setResetMessage] = useState("");
   const [resetPhase, setResetPhase] = useState("request"); // Agregamos un estado para controlar la fase
+  const [notOkRecoverPass, SetNotOkRecoverPass] = useState("");
 
   const handlePasswordReset = async (e) => {
     e.preventDefault();
+    SetNotOkRecoverPass("");
     try {
       if (resetPhase === "request") {
         // Si estamos en la fase de enviar solicitud
@@ -37,13 +39,15 @@ function PassRecovery({ handleModal }) {
         setResetPhase("request"); // Volver a la fase de enviar solicitud
       }
     } catch (error) {
-      console.error(
-        "Error al enviar solicitud o restablecer contraseña:",
-        error
-      );
+      // console.error(
+      //   "Error al enviar solicitud o restablecer contraseña:",
+      //   error
+      // );
       setResetMessage(
         "Error al enviar la solicitud o restablecer la contraseña. Por favor, inténtalo de nuevo."
       );
+      // console.log(error.response.data.message);
+      SetNotOkRecoverPass(error.response.data.message);
     }
   };
 
@@ -95,6 +99,9 @@ function PassRecovery({ handleModal }) {
                 </label>
               </div>
             </>
+          )}
+          {notOkRecoverPass && (
+            <p style={{ color: "orange" }}>{notOkRecoverPass}</p>
           )}
 
           <button type="submit">

@@ -15,7 +15,7 @@ const Register = () => {
   const [showModal, setShowModal] = useState(false);
   const [errorConfirmPassword, setErrorConfirmPassword] = useState("");
   const [errorCredentials, setErrorCredentials] = useState("");
-  const [okRegister, setOkRegister] = useState("");
+  const [notOkRegister, setNotOkRegister] = useState("");
 
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setOkRegister("");
+    setNotOkRegister("");
     setErrorConfirmPassword("");
     setErrorCredentials("");
 
@@ -51,7 +51,7 @@ const Register = () => {
 
     try {
       const response = await axios.post("api/users/register", credentials);
-      console.log(response.data.status);
+      // console.log(response.data.status);
       if (response.data.status === "ok") {
         setShowModal(true);
         setCredentials({
@@ -64,8 +64,8 @@ const Register = () => {
       }
     } catch (error) {
       // console.log(error);
-      console.log(error.response.data.message);
-      setOkRegister(error.response.data.message);
+      // console.log(error.response.data.message);
+      setNotOkRegister(error.response.data.message);
     }
   };
 
@@ -129,7 +129,7 @@ const Register = () => {
         {errorCredentials && (
           <p style={{ color: "orange" }}>{errorCredentials}</p>
         )}
-        {okRegister && <p style={{ color: "orange" }}>{okRegister}</p>}
+        {notOkRegister && <p style={{ color: "orange" }}>{notOkRegister}</p>}
 
         <button type="submit">Ingresar</button>
       </form>
