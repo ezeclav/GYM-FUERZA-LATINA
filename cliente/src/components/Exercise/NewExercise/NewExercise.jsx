@@ -6,6 +6,7 @@ import "./NewExercise.css";
 import { Link, useNavigate } from "react-router-dom";
 
 function NewExercise() {
+  const [okExercise, SetOkExercise] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -26,12 +27,13 @@ function NewExercise() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    SetOkExercise("");
 
     const formDataToSend = new FormData();
     formDataToSend.append("name", formData.name);
     formDataToSend.append("description", formData.description);
     formDataToSend.append("typology", formData.typology);
-    formDataToSend.append("muscle_Group", formData.muscle_group);
+    formDataToSend.append("muscle_group", formData.muscle_group);
     formDataToSend.append("equipment", formData.equipment);
 
     const token = auth.getToken();
@@ -43,10 +45,12 @@ function NewExercise() {
       });
       console.log("New exercise created:", response.data);
       if (response.data.status === "ok") {
-        navigate("/");
+        // navigate("/");
+        SetOkExercise("Ejercicio creado con EXITO..!!!");
       }
     } catch (error) {
       console.error("Error al crear un nuevo ejercicio:", error);
+      SetOkExercise("ERROR al crear el ejercicio....intente nuevamente.");
     }
   };
 
@@ -57,6 +61,7 @@ function NewExercise() {
         <div className="form-group">
           <label htmlFor="name">Nombre:</label>
           <input
+            required
             type="text"
             id="name"
             name="name"
@@ -71,6 +76,7 @@ function NewExercise() {
         <div className="form-group">
           <label htmlFor="descrpition">Descripción: </label>
           <textarea
+            required
             id="description"
             name="description"
             value={formData.description}
@@ -82,6 +88,7 @@ function NewExercise() {
         <div className="form-group">
           <label htmlFor="typology">Tipología:</label>
           <input
+            required
             type="radio"
             id="typologyFuerza"
             name="typology"
@@ -113,6 +120,7 @@ function NewExercise() {
         <div className="form-group">
           <label htmlFor="muscle_group">Grupo Muscular:</label>
           <input
+            required
             type="text"
             id="muscle_group"
             name="muscle_group"
@@ -124,6 +132,7 @@ function NewExercise() {
         <div className="form-group">
           <label htmlFor="equipment">Equipo:</label>
           <input
+            required
             type="text"
             id="equipment"
             name="equipment"
@@ -131,6 +140,7 @@ function NewExercise() {
             className="form-control"
           />
         </div>
+        {okExercise && <p>{okExercise}</p>}
 
         <button type="submit" className="btn btn-primary">
           Crear Ejercicio

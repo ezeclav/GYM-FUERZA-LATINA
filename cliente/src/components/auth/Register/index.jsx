@@ -15,6 +15,7 @@ const Register = () => {
   const [showModal, setShowModal] = useState(false);
   const [errorConfirmPassword, setErrorConfirmPassword] = useState("");
   const [errorCredentials, setErrorCredentials] = useState("");
+  const [okRegister, setOkRegister] = useState("");
 
   const navigate = useNavigate();
 
@@ -28,6 +29,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setOkRegister("");
     setErrorConfirmPassword("");
     setErrorCredentials("");
 
@@ -61,7 +63,9 @@ const Register = () => {
         setErrorConfirmPassword("");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      console.log(error.response.data.message);
+      setOkRegister(error.response.data.message);
     }
   };
 
@@ -77,6 +81,7 @@ const Register = () => {
         <label htmlFor="">
           Usuario
           <input
+            required
             type="text"
             name="username"
             value={credentials.username}
@@ -87,6 +92,7 @@ const Register = () => {
         <label htmlFor="">
           Correo
           <input
+            required
             type="email"
             name="email"
             value={credentials.email}
@@ -97,6 +103,7 @@ const Register = () => {
         <label htmlFor="">
           Contraseña
           <input
+            required
             type="password"
             name="password"
             value={credentials.password}
@@ -107,6 +114,7 @@ const Register = () => {
         <label htmlFor="">
           Confirmar Contraseña
           <input
+            required
             type="password"
             name="confirmPassword"
             value={credentials.confirmPassword}
@@ -116,9 +124,12 @@ const Register = () => {
         </label>
 
         {errorConfirmPassword && (
-          <p style={{ color: "red" }}>{errorConfirmPassword}</p>
+          <p style={{ color: "orange" }}>{errorConfirmPassword}</p>
         )}
-        {errorCredentials && <p style={{ color: "red" }}>{errorCredentials}</p>}
+        {errorCredentials && (
+          <p style={{ color: "orange" }}>{errorCredentials}</p>
+        )}
+        {okRegister && <p style={{ color: "orange" }}>{okRegister}</p>}
 
         <button type="submit">Ingresar</button>
       </form>

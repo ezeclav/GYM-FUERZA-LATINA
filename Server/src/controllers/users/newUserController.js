@@ -1,24 +1,28 @@
-import randomstring from 'randomstring';
+import randomstring from "randomstring";
 
-import insertUserModel from '../../models/users/insertUserModel.js';
+import validateSchemaUtil from "../../util/validateSchemaUtil.js";
+import newUserSchema from "../../schemas/users/newUserSchema.js";
 
-const newUserController = async (req,res,next) => {
-    try {
+import insertUserModel from "../../models/users/insertUserModel.js";
 
-        const { username, email, password } = req.body;
-        
-        const registrationCode = randomstring.generate(30);
+const newUserController = async (req, res, next) => {
+  try {
+    const { username, email, password } = req.body;
 
-        await insertUserModel(username, email, password, registrationCode);
+    await validateSchemaUtil(newUserSchema, req.body);
 
-        res.send({
-            status: 'ok',
-            message: 'Usuario registrado. Verifique su cuenta mediante el email recibido'
-        });
-        
-    } catch (error) {
-        next(error);
-    }
-}
+    const registrationCode = randomstring.generate(30);
+
+    await insertUserModel(username, email, password, registrationCode);
+
+    res.send({
+      status: "ok",
+      message:
+        "Usuario registrado. Verifique su cuenta mediante el email recibido",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 export default newUserController;
