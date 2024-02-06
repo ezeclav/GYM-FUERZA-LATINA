@@ -6,8 +6,9 @@ import { savePhotoService } from "../../services/photoService.js";
 
 const newExercisesController = async (req, res, next) => {
   try {
-    const { name, description, typology, muscle_group, equipment } = req.body;
-    console.log(req.body);
+    const { name, description, typology, muscle_group, equipment, photo } =
+      req.body;
+    // console.log(req.body);
     const { authorization } = req.headers;
     const tokenInfo = jwt.verify(authorization, process.env.SECRET);
     const userId = tokenInfo.id;
@@ -18,7 +19,7 @@ const newExercisesController = async (req, res, next) => {
       typology,
       muscle_group,
       equipment,
-      userId,
+      userId
     );
 
     let photos = [];

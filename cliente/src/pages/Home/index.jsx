@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
+import "./Home.css";
+
 function Home() {
   const { isAuthenticated, user } = useContext(AuthContext);
 
