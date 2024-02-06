@@ -15,7 +15,7 @@ function ExerciseList() {
     const fetchExercises = async () => {
       try {
         const response = await axios.get("/api/exercises");
-        const reversedExercises = response.data.data.exercises.reverse();
+        const reversedExercises = response.data.data.reverse();
         setExercises(reversedExercises);
       } catch (err) {
         setError(err.message);
@@ -55,8 +55,8 @@ function ExerciseList() {
       </div>
 
       <SearchBar searchHandler={searchHandler} />
-      {result.map(({ id, name, photo, description, typology, muscle_group, equipment }) => (
-        <ExerciseCard key={id} id={id} name={name} photo={photo} description={description} typology={typology} muscle_group={muscle_group} equipment={equipment} />
+      {result.map(({ id_exercise, name, photo, description, typology, muscle_group, equipment }) => (
+        <ExerciseCard key={id_exercise} name={name} photo={photo} description={description} typology={typology} muscle_group={muscle_group} equipment={equipment} />
       ))}
     </div>
   );

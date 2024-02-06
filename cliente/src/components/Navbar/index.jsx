@@ -30,9 +30,9 @@ function Navbar() {
                 Perfil de usuario
               </Link>
             </li>
-            <li onClick={NewExercisePage}>
-              <Link to="/NewExercise" onClick={closeMenu}>
-                Crear Nuevo Ejercicio
+            <li onClick={ExerciseList}>
+              <Link to="/exercises" onClick={closeMenu}>
+                Ejercicios
               </Link>
             </li>
             <li onClick={logout}>
@@ -57,11 +57,6 @@ function Navbar() {
             <li>
               <Link to="/auth/register" onClick={closeMenu}>
                 Registrarse
-              </Link>
-            </li>
-            <li onClick={ExerciseList}>
-              <Link to="/exercises" onClick={closeMenu}>
-                Ejercicios
               </Link>
             </li>
           </div>

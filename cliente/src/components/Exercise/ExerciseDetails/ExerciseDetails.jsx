@@ -1,86 +1,112 @@
-import { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthContext";
+import React, { useState, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
-//import ExercisePhoto from "../ExercisePhoto"; <---------- TIRA ERROR. POR SOLUCIONAR
-import Modal from "../../Modal";
-//import ExerciseLike from '../ExerciseLike'; <------------ TIRA ERROR. POR SOLUCIONAR
-import "./ExerciseDetails.css";
+import ExercisePhoto from "../ExercisePhoto/ExercisePhoto";
+import { AuthContext } from "../../../context/AuthContext.jsx";
+import ExerciseCard from "../ExerciseCard/ExerciseCard.jsx";
 
 const ExerciseDetails = () => {
   const { exerciseId } = useParams();
-  const [exercise, setExercise] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [showPhotoModal, setShowPhotoModal] = useState(false);
-  const [pictures, setPictures] = useState([]); 
+  const history = useHistory();
+  const [exerciseData, setExerciseData] = useState({
+    name: "",
+    description: "",
+    photo: "",
+    typology: "",
+    muscle_group: "",
+    equipment: ""
+  });
 
+  const admin = useContext(AuthContext);
 
   useEffect(() => {
-    const fetchExercises = async () => {
+    const fetchExercise = async () => {
       try {
         const response = await axios.get(`/api/exercises/${exerciseId}`);
-        setExercise(response.data.data.exercise);
+        setExerciseData(response.data.data.exercise);
       } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
+        console.error("Error al acceder al ejercicio:", err);
       }
     };
 
-    fetchExercises();
+    fetchExercise();
   }, [exerciseId]);
 
-
-  const handleUploadSuccess = (newPicture) => {
- 
-    setPictures([...pictures, newPicture]);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setExerciseData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
   };
 
-  if (!exercise) {
-    return <div>Cargando...</div>;
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post(`/api/modifExercise/${exerciseId}`, exerciseData);
+      history.push(`/exercises/${exerciseId}`);
+    } catch (err) {
+      console.error("Error al editar el ejercicio:", err);
+    }
+  };
 
-  const { nombre, fotos, descripcion, tipologia, grupoMuscular, equipo } = exercise;
-
-
-  return (
-    <div className="exercise-details-container">
-      {error && <p>{error}</p>}
-      {loading && <h1>LOADING ...</h1>}
-      {exercise && (
-        <>
-          <h2 className="exercise-nombre">Nombre: {nombre}</h2>
-          <h3 className="exercise-descripcion">Descripcion: {descripcion}</h3>
-          <p className="exercise-tipologia">Tipología: {tipologia}</p>
-          <p className="exercise-grupoMuscular">Grupo Muscular: {grupoMuscular}</p>
-          <p className="exercise-equipo">Equipo: {equipo}</p>
-          <ExerciseLike exerciseId={exerciseId}/>
-        </>
-      )}
-      <div className="foto-list">
-        {fotos &&
-          fotos.map((foto) => (
-            <img
-              key={foto.id}
-              src={foto.name}
-              alt={`Foto ${foto.id}`}
-              className="exercise-foto"
-            />
-          ))}
-
-      </div>
-      {showPhotoModal && (
-        <Modal>
-          <ExercisePhoto
-            exerciseId={exerciseId}
-            onClose={() => setShowPhotoModal(false)}
-            onUpload={handleUploadSuccess}
+  
+    return (
+    <div>
+      <h2>Editar Ejercicio</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Nombre:
+          <input
+            type="text"
+            name="nombre"
+            value={exerciseData.name}
+            onChange={handleChange}
           />
-        </Modal>
-      )}      
+        </label>
+        <label>
+          Descripción:
+          <textarea
+            name="descripcion"
+            value={exerciseData.description}
+            onChange={handleChange}
+          />
+        </label>
+        <label> Foto: 
+        <ExercisePhoto />
+        </label>
+        <label>
+          Tipología:
+          <input
+            type="text"
+            name="tipología"
+            value={exerciseData.typology}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Grupo Muscular:
+          <input
+            type="text"
+            name="grupo muscular"
+            value={exerciseData.muscle_group}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Equipamiento:
+          <input
+            type="text"
+            name="nombre"
+            value={exerciseData.equipment}
+            onChange={handleChange}
+          />
+        </label>
+        <button type="submit">Guardar</button>
+      </form>
     </div>
   );
 };
 
 export default ExerciseDetails;
+
