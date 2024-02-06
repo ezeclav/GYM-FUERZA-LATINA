@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./ExerciseCard.css";
 import { AuthContext } from "../../../context/AuthContext";
 
-const admin = useContext(AuthContext);
+//const admin = useContext(AuthContext);
 
 function ExerciseCard({ id, name, description, photo, typology, muscle_group, equipment }) {
   return (
