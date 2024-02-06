@@ -6,6 +6,7 @@ import AuthRoutes from "./routes/AuthRoutes";
 import UserRoutes from "./routes/UserRoutes";
 import NewExercisePage from "./pages/NewExercise/NewExercise";
 import ExerciseList2 from "./pages/ExerciseList/ExerciseList";
+import ExerciseDetails from "./components/Exercise/ExerciseDetails/ExerciseDetails";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/exercises",
         element: <ExerciseList2 />,
+      },
+      {
+        path: "exercises/:exerciseId",
+        element: <ExerciseDetails />,
       },
     ],
   },

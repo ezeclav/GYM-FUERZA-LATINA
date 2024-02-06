@@ -52,7 +52,7 @@ router.delete(
 );
 
 // Para visualizar todos los ejercicios
-router.get("/exercises", listExercisesController);
+router.get("/exercises", authUserController, listExercisesController);
 
 // Para visualizar un ejercicio en particular
 router.get(

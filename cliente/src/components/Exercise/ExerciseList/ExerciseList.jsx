@@ -14,7 +14,15 @@ function ExerciseList() {
   useEffect(() => {
     const fetchExercises = async () => {
       try {
-        const response = await axios.get("/api/exercises");
+        const token = localStorage.getItem("token");
+
+        const options = {
+          headers: {
+            Authorization: token,
+          },
+        };
+        const response = await axios.get("/api/exercises", options);
+
         const reversedExercises = response.data.data.reverse();
         setExercises(reversedExercises);
       } catch (err) {
@@ -58,7 +66,7 @@ function ExerciseList() {
         </Link>
       </div>
 
-      <SearchBar searchHandler={searchHandler} />
+      {/* <SearchBar searchHandler={searchHandler} /> */}
       {result.map(
         ({
           id_exercise,

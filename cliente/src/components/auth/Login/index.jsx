@@ -41,6 +41,7 @@ const Login = () => {
     try {
       const response = await axios.post("api/users/login", credentials);
       login(response.data.data.token);
+      console.login(response);
     } catch (error) {
       setShowModal(true);
       setErrorCredentials(error.response.data.message);
