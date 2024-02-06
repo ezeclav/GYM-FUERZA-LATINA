@@ -4,8 +4,8 @@ import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import AuthRoutes from "./routes/AuthRoutes";
 import UserRoutes from "./routes/UserRoutes";
-import ExerciseDetails from "./components/Exercise/ExerciseDetails/ExerciseDetails";
 import NewExercisePage from "./pages/NewExercise/NewExercise";
+import ExerciseList2 from "./pages/ExerciseList/ExerciseList";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/newExercise",
         element: <NewExercisePage />,
+      },
+      {
+        path: "/exercises",
+        element: <ExerciseList2 />,
       },
     ],
   },
