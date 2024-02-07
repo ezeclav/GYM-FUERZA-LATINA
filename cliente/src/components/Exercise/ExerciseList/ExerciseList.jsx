@@ -22,7 +22,7 @@ function ExerciseList() {
           },
         };
         const response = await axios.get("/api/exercises", options);
-
+        console.log(response);
         const reversedExercises = response.data.data.reverse();
         setExercises(reversedExercises);
       } catch (err) {

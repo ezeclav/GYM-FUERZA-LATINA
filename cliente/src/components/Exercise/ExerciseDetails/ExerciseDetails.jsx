@@ -1,5 +1,5 @@
+import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import ExercisePhoto from "../ExercisePhoto/ExercisePhoto";
 import { AuthContext } from "../../../context/AuthContext.jsx";
@@ -14,7 +14,7 @@ const ExerciseDetails = () => {
     photo: "",
     typology: "",
     muscle_group: "",
-    equipment: ""
+    equipment: "",
   });
 
   const admin = useContext(AuthContext);
@@ -36,7 +36,7 @@ const ExerciseDetails = () => {
     const { name, value } = e.target;
     setExerciseData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -50,8 +50,7 @@ const ExerciseDetails = () => {
     }
   };
 
-  
-    return (
+  return (
     <div>
       <h2>Editar Ejercicio</h2>
       <form onSubmit={handleSubmit}>
@@ -72,8 +71,10 @@ const ExerciseDetails = () => {
             onChange={handleChange}
           />
         </label>
-        <label> Foto: 
-        <ExercisePhoto />
+        <label>
+          {" "}
+          Foto:
+          <ExercisePhoto />
         </label>
         <label>
           Tipología:
@@ -109,4 +110,3 @@ const ExerciseDetails = () => {
 };
 
 export default ExerciseDetails;
-
