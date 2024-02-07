@@ -31,11 +31,11 @@ const router = createBrowserRouter([
         element: <NewExercisePage />,
       },
       {
-        path: "/exercises",
+        path: "/exercise",
         element: <ExerciseList2 />,
       },
       {
-        path: "exercises/:exerciseId",
+        path: "exercise/:exerciseId",
         element: <ExerciseDetails />,
       },
     ],

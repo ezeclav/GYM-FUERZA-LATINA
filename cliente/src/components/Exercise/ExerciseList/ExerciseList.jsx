@@ -22,8 +22,9 @@ function ExerciseList() {
           },
         };
         const response = await axios.get("/api/exercises", options);
-        console.log(response);
+
         const reversedExercises = response.data.data.reverse();
+        console.log(response.data.data);
         setExercises(reversedExercises);
       } catch (err) {
         setError(err.message);
@@ -79,6 +80,7 @@ function ExerciseList() {
         }) => (
           <ExerciseCard
             key={id_exercise}
+            id={id_exercise}
             name={name}
             photo={photo}
             description={description}
