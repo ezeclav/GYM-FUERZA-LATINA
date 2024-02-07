@@ -15,7 +15,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar">
+    <div className="navbar">
       <ul>
         {isAuthenticated ? (
           // Usuario Logueado
@@ -70,7 +70,7 @@ function Navbar() {
         <span></span>
         <span></span>
       </div>
-    </nav>
+    </div>
   );
 }
 

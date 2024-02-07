@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import axios from "axios";
 //import ExercisePhoto from "../ExercisePhoto"; <---------- TIRA ERROR. POR SOLUCIONAR
@@ -19,7 +19,7 @@ const ExerciseDetails = () => {
     const fetchExercises = async () => {
       try {
         const token = localStorage.getItem("token");
-        console.log(exerciseId);
+        // console.log(exerciseId);
         const options = {
           headers: {
             Authorization: token,
@@ -27,7 +27,7 @@ const ExerciseDetails = () => {
         };
         const response = await axios.get(
           `/api/exercise/${exerciseId}`,
-          options,
+          options
         );
         setExercise(response.data.data);
       } catch (err) {
@@ -86,6 +86,9 @@ const ExerciseDetails = () => {
           />
         </Modal>
       )}
+      <Link to="#" onClick={() => window.history.back()}>
+        VOLVER
+      </Link>
     </div>
   );
 };

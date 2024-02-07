@@ -24,8 +24,12 @@ function ExerciseList() {
         };
         const response = await axios.get("/api/exercises", options);
 
-        const reversedExercises = response.data.data.reverse();
-        console.log(response.data.data);
+        // Enlistar de manera descendente:
+        const reversedExercises = response.data.data;
+
+        // Enlistar de manera ascendente con RESERVE()
+        // const reversedExercises = response.data.data.reverse();
+        // console.log(response.data.data);
         setExercises(reversedExercises);
       } catch (err) {
         setError(err.message);
@@ -51,7 +55,7 @@ function ExerciseList() {
       exercises.filter(
         (exercise) =>
           exercise.title.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
-          -1,
+          -1
       );
   } else {
     result = exercises;
@@ -89,7 +93,7 @@ function ExerciseList() {
             muscle_group={muscle_group}
             equipment={equipment}
           />
-        ),
+        )
       )}
     </div>
   );

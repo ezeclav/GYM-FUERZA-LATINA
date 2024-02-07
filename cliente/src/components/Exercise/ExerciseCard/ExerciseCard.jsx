@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./ExerciseCard.css";
-import { AuthContext } from "../../../context/AuthContext";
+// import { AuthContext } from "../../../context/AuthContext";
 
 //const admin = useContext(AuthContext);
 
