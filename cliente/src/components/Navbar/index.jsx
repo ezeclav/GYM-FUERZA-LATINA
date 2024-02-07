@@ -31,7 +31,7 @@ function Navbar() {
               </Link>
             </li>
             <li onClick={ExerciseList}>
-              <Link to="/exercises" onClick={closeMenu}>
+              <Link to="/exercise" onClick={closeMenu}>
                 Ejercicios
               </Link>
             </li>

@@ -4,6 +4,7 @@ import axios from "axios";
 import ExerciseCard from "../ExerciseCard/ExerciseCard";
 import SearchBar from "../../SearchBar";
 //import "./ExerciseList.css";
+import "./ExerciseList.css";
 
 function ExerciseList() {
   const [exercises, setExercises] = useState([]);
