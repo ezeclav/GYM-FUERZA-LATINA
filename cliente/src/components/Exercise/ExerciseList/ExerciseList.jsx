@@ -54,7 +54,7 @@ function ExerciseList() {
       exercises &&
       exercises.filter(
         (exercise) =>
-          exercise.title.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
+          exercise.name.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
           -1
       );
   } else {
@@ -62,39 +62,40 @@ function ExerciseList() {
   }
 
   return (
-    <div className="exercise-list-container">
+    <div>
       {error && <p className="error-message">{error}</p>}
       {loading && <h1 className="loading-message">LOADING ...</h1>}
 
-      <div className="img-container">
-        <Link to="/NewExercise" className="img-link">
+      <div className="exerc-container">
+        <Link to="/NewExercise" className="exerc-link">
           <button>Crear Nuevo Ejercicio</button>
         </Link>
       </div>
-
-      {/* <SearchBar searchHandler={searchHandler} /> */}
-      {result.map(
-        ({
-          id_exercise,
-          name,
-          photo,
-          description,
-          typology,
-          muscle_group,
-          equipment,
-        }) => (
-          <ExerciseCard
-            key={id_exercise}
-            id={id_exercise}
-            name={name}
-            photo={photo}
-            description={description}
-            typology={typology}
-            muscle_group={muscle_group}
-            equipment={equipment}
-          />
-        )
-      )}
+      <SearchBar searchHandler={searchHandler} />
+      <div className="exercise-list-container">
+        {result.map(
+          ({
+            id_exercise,
+            name,
+            photo,
+            description,
+            typology,
+            muscle_group,
+            equipment,
+          }) => (
+            <ExerciseCard
+              key={id_exercise}
+              id={id_exercise}
+              name={name}
+              photo={photo}
+              description={description}
+              typology={typology}
+              muscle_group={muscle_group}
+              equipment={equipment}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 }
