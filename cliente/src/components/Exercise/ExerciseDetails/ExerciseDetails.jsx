@@ -7,6 +7,7 @@ import Modal from "../../Modal";
 //import ExerciseLike from '../ExerciseLike'; <------------ TIRA ERROR. POR SOLUCIONAR
 import "./ExerciseDetails.css";
 
+const defaultExercise = "https://placehold.co/200x200.png";
 const ExerciseDetails = () => {
   const { exerciseId } = useParams();
   const [exercise, setExercise] = useState(null);
@@ -58,6 +59,7 @@ const ExerciseDetails = () => {
       {exercise && (
         <>
           <h2 className="exercise-nombre">Nombre: {name}</h2>
+          <img src={defaultExercise}></img>
           <h3 className="exercise-descripcion">Descripcion: {description}</h3>
           <p className="exercise-tipologia">Tipología: {typology}</p>
           <p className="exercise-grupoMuscular">

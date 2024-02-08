@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import "./UserProfile.css";
 
+const defaultAvatar = "https://placehold.co/150x150.png";
 const UserProfile = ({ toggleEditing }) => {
   const { user, isAuthenticated } = useContext(AuthContext);
 
@@ -16,6 +17,7 @@ const UserProfile = ({ toggleEditing }) => {
   return (
     <div className="user-profile-container">
       <h2>Perfil de Usuario</h2>
+      <img src={user.avatar || defaultAvatar}></img>
       <p className="user-profile-info">
         <b>Nombre de Usuario: </b>
         {user.username}
