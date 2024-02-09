@@ -32,7 +32,7 @@ const addEntryPhotoController = async (req, res, next) => {
     const photoName = await cloudinaryService(req.files.photo);
     // Guardamos la foto en la base de datos y obtenemos el id de la misma.
     const photoId = await insertPhotoModel(photoName, exerciseId);
-
+    console.log(photoId);
     res.send({
       status: "ok",
       data: {

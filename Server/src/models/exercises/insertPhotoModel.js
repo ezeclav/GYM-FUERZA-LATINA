@@ -8,9 +8,9 @@ const insertPhotoModel = async (name, exerciseId) => {
             INSERT INTO photo_exercises (name, exerciseId)
             VALUES (?,?)
         `,
-    [name, exerciseId]
+    [name, exerciseId],
   );
-
+  console.log(result);
   const { insertId } = result;
 
   return insertId;

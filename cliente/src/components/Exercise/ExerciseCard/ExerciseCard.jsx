@@ -4,15 +4,8 @@ import { AuthContext } from "../../../context/AuthContext";
 
 //const admin = useContext(AuthContext);
 const defaultExercise = "https://placehold.co/90x90.png";
-function ExerciseCard({
-  id,
-  name,
-  description,
-  photo,
-  typology,
-  muscle_group,
-  equipment,
-}) {
+function ExerciseCard({ id, name, typology, muscle_group, equipment, photos }) {
+  console.log(ExerciseCard);
   return (
     <div className="exercise-list-card">
       <div className="exercise-details">

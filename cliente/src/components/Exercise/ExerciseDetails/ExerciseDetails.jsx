@@ -14,7 +14,7 @@ const ExerciseDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showPhotoModal, setShowPhotoModal] = useState(false);
-  const [pictures, setPictures] = useState([]);
+  const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
     const fetchExercises = async () => {
@@ -41,25 +41,34 @@ const ExerciseDetails = () => {
     fetchExercises();
   }, [exerciseId]);
 
-  const handleUploadSuccess = (newPicture) => {
-    setPictures([...pictures, newPicture]);
+  const handleUploadSuccess = (newPhotos) => {
+    setPhotos([...photos, newPhotos]);
   };
 
   if (!exercise) {
     return <div>Cargando...</div>;
   }
 
-  const { name, photo, description, typology, muscle_group, equipment } =
-    exercise;
+  const { name, description, typology, muscle_group, equipment } = exercise;
 
   return (
     <div className="exercise-details-container">
+      <div className="foto-list">
+        {exercise.photos &&
+          exercise.photos.map((photo) => (
+            <img
+              key={photo.id_photo_exercise}
+              src={photo.name}
+              alt={`photo ${photo.id_photo_exercise}`}
+              className="exercise-foto"
+            />
+          ))}
+      </div>
       {error && <p>{error}</p>}
       {loading && <h1>LOADING ...</h1>}
       {exercise && (
         <>
           <h2 className="exercise-nombre">Nombre: {name}</h2>
-
           <h3 className="exercise-descripcion">Descripcion: {description}</h3>
           <p className="exercise-tipologia">Tipología: {typology}</p>
           <p className="exercise-grupoMuscular">
@@ -68,24 +77,13 @@ const ExerciseDetails = () => {
           <p className="exercise-equipo">Equipo: {equipment}</p>
         </>
       )}
-      <div className="foto-list">
-        {photo &&
-          photo.map((photo) => (
-            <img
-              key={photo.id}
-              src={photo.name}
-              alt={`photo ${photo.id}`}
-              className="exercise-foto"
-            />
-          ))}
-      </div>
+
       <button
         onClick={() => setShowPhotoModal(true)}
         className="add-photo-button"
       >
         Agregar foto
       </button>
-
       {showPhotoModal && (
         <Modal>
           <ExercisePhoto

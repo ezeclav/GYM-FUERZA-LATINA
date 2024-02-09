@@ -73,7 +73,7 @@ function ExerciseList() {
         ({
           id_exercise,
           name,
-          photo,
+          id_photo_exercise,
           description,
           typology,
           muscle_group,
@@ -83,7 +83,7 @@ function ExerciseList() {
             key={id_exercise}
             id={id_exercise}
             name={name}
-            photo={photo}
+            photo={id_photo_exercise}
             description={description}
             typology={typology}
             muscle_group={muscle_group}
