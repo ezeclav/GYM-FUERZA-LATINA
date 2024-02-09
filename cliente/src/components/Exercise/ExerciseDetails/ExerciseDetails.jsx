@@ -6,8 +6,8 @@ import axios from "axios";
 import Modal from "../../Modal";
 //import ExerciseLike from '../ExerciseLike'; <------------ TIRA ERROR. POR SOLUCIONAR
 import "./ExerciseDetails.css";
+import ExercisePhoto from "../ExercisePhoto/ExercisePhoto";
 
-const defaultExercise = "https://placehold.co/200x200.png";
 const ExerciseDetails = () => {
   const { exerciseId } = useParams();
   const [exercise, setExercise] = useState(null);
@@ -49,7 +49,7 @@ const ExerciseDetails = () => {
     return <div>Cargando...</div>;
   }
 
-  const { name, fotos, description, typology, muscle_group, equipment } =
+  const { name, photo, description, typology, muscle_group, equipment } =
     exercise;
 
   return (
@@ -59,7 +59,7 @@ const ExerciseDetails = () => {
       {exercise && (
         <>
           <h2 className="exercise-nombre">Nombre: {name}</h2>
-          <img src={defaultExercise}></img>
+
           <h3 className="exercise-descripcion">Descripcion: {description}</h3>
           <p className="exercise-tipologia">Tipología: {typology}</p>
           <p className="exercise-grupoMuscular">
@@ -69,16 +69,23 @@ const ExerciseDetails = () => {
         </>
       )}
       <div className="foto-list">
-        {fotos &&
-          fotos.map((foto) => (
+        {photo &&
+          photo.map((photo) => (
             <img
-              key={foto.id}
-              src={foto.name}
-              alt={`Foto ${foto.id}`}
+              key={photo.id}
+              src={photo.name}
+              alt={`photo ${photo.id}`}
               className="exercise-foto"
             />
           ))}
       </div>
+      <button
+        onClick={() => setShowPhotoModal(true)}
+        className="add-photo-button"
+      >
+        Agregar foto
+      </button>
+
       {showPhotoModal && (
         <Modal>
           <ExercisePhoto

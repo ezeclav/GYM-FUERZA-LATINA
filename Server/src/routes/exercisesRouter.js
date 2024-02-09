@@ -20,6 +20,7 @@ import {
   likeExerciseController,
   deleteExistLikeController,
 } from "../controllers/exercises/index.js";
+import addEntryPhotoController from "../controllers/exercises/addEntryPhotoController.js";
 
 ///////////////////////////////////////////////////////////////
 //                   RUTAS DE EJERCICIOS                     //
@@ -60,6 +61,16 @@ router.get(
   authUserController,
   exerciseExistsController,
   getExercisesController,
+);
+
+//Agregar una foto a una entrada
+router.post(
+  "/exercise/:exerciseId/photo",
+  authUserController,
+  userExistsController,
+  exerciseExistsController,
+  cantEditController,
+  addEntryPhotoController,
 );
 
 // Para darle LIKE a un ejercicio

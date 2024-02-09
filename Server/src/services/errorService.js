@@ -53,6 +53,13 @@ export const notAuthenticatedError = () => {
     message: 'Se esperaba un token por el header "Authorization" ',
   };
 };
+export const photoLimitReachedError = () => {
+  throw {
+    httpStatus: 409, // Conflict
+    code: "PHOTO_LIMIT_REACHED",
+    message: "Se ha alcanzado el límite de tres fotos en la entrada",
+  };
+};
 
 export const saveFileError = () => {
   throw {

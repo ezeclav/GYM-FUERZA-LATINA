@@ -3,7 +3,7 @@ import axios from "axios";
 import Auth from "../../../utils/auth";
 import "./ExercisePhoto.css";
 
-function ExercisePhoto({ exerciseId, onUpload }) {
+function ExercisePhoto({ exerciseId, onUpload, onClose }) {
   const [file, setFile] = useState(null);
 
   const handleFileChange = (e) => {
@@ -17,12 +17,12 @@ function ExercisePhoto({ exerciseId, onUpload }) {
     }
 
     const formData = new FormData();
-    formData.append("foto", file);
+    formData.append("photo", file);
 
     try {
       const token = Auth.getToken();
       const response = await axios.post(
-        `api/exercises/${exerciseId}`,
+        `api/exercise/${exerciseId}/photo`,
         formData,
         {
           headers: {
@@ -31,8 +31,8 @@ function ExercisePhoto({ exerciseId, onUpload }) {
           },
         },
       );
-      console.log(response);
       onUpload();
+      onClose();
     } catch (error) {
       console.error("Error al cargar la foto:", error);
     }
@@ -40,8 +40,10 @@ function ExercisePhoto({ exerciseId, onUpload }) {
 
   return (
     <div className="exercise-details-container ">
+      <h2 className="entry-title">Agregar Foto</h2>
       <input type="file" accept="image/*" onChange={handleFileChange} />
       <button onClick={handleUpload}>Subir Foto</button>
+      <button onClick={onClose}>Cancelar</button>
     </div>
   );
 }

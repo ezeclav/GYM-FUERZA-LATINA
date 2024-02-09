@@ -1,8 +1,5 @@
 import jwt from "jsonwebtoken";
-
 import insertExerciseModel from "../../models/exercises/insertExerciseModel.js";
-import insertPhotoModel from "../../models/exercises/insertPhotoModel.js";
-import { savePhotoService } from "../../services/photoService.js";
 
 const newExercisesController = async (req, res, next) => {
   try {
@@ -19,23 +16,8 @@ const newExercisesController = async (req, res, next) => {
       typology,
       muscle_group,
       equipment,
-      userId
+      userId,
     );
-
-    let photos = [];
-
-    if (req.files) {
-      for (let photo of Object.values(req.files).slice(0, 3)) {
-        let photoName = await savePhotoService(photo, 500);
-
-        const photoId = await insertPhotoModel(photoName, exerciseId);
-
-        photos.push({
-          id: photoId,
-          name: photoName,
-        });
-      }
-    }
 
     res.send({
       status: "ok",
