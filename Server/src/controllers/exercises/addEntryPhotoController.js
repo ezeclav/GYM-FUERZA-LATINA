@@ -3,10 +3,7 @@ import selectExerciseByIdModel from "../../models/exercises/selectExerciseByIdMo
 import { cloudinaryService } from "../../services/cloudinaryService.js";
 import { photoLimitReachedError } from "../../services/errorService.js";
 import validateSchemaUtil from "../../util/validateSchemaUtil.js";
-import addExercisePhotoSchema from "../../../shemas/exercises/addExercisePhotoSchema.js";
-import { savePhotoService } from "../../services/photoService.js";
 
-// Función controladora final que agrega una foto a una entrada.
 const addEntryPhotoController = async (req, res, next) => {
   try {
     // Obtenemos el id de al entrada de los path params.
