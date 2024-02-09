@@ -52,50 +52,65 @@ const ExerciseDetails = () => {
   const { name, description, typology, muscle_group, equipment } = exercise;
 
   return (
-    <div className="exercise-details-container">
-      <div className="foto-list">
-        {exercise.photos &&
-          exercise.photos.map((photo) => (
-            <img
-              key={photo.id_photo_exercise}
-              src={photo.name}
-              alt={`photo ${photo.id_photo_exercise}`}
-              className="exercise-foto"
-            />
-          ))}
+    <div>
+      <div className="exercise-details-container">
+        <div className="foto-list">
+          {exercise.photos &&
+            exercise.photos.map((photo) => (
+              <img
+                key={photo.id_photo_exercise}
+                src={photo.name}
+                alt={`photo ${photo.id_photo_exercise}`}
+                className="exercise-foto"
+              />
+            ))}
+        </div>
+        {error && <p>{error}</p>}
+        {loading && <h1>LOADING ...</h1>}
+        {exercise && (
+          <>
+            <div className="details-exercise">
+              <h2 className="exercise-nombre">
+                <span className="underline">Nombre: </span>&nbsp; {name}
+              </h2>
+              <h4 className="exercise-descripcion">
+                <span className="underline">Descripción: </span>&nbsp;
+                {description}
+              </h4>
+              <p className="exercise-tipologia">
+                <span className="underline">Tipología:</span>&nbsp; {typology}
+              </p>
+              <p className="exercise-grupoMuscular">
+                <span className="underline">Grupo Muscular:</span>&nbsp;{" "}
+                {muscle_group}
+              </p>
+              <p className="exercise-equipo">
+                <span className="underline">Equipo:</span>&nbsp; {equipment}
+              </p>
+            </div>
+          </>
+        )}
       </div>
-      {error && <p>{error}</p>}
-      {loading && <h1>LOADING ...</h1>}
-      {exercise && (
-        <>
-          <h2 className="exercise-nombre">Nombre: {name}</h2>
-          <h3 className="exercise-descripcion">Descripcion: {description}</h3>
-          <p className="exercise-tipologia">Tipología: {typology}</p>
-          <p className="exercise-grupoMuscular">
-            Grupo Muscular: {muscle_group}
-          </p>
-          <p className="exercise-equipo">Equipo: {equipment}</p>
-        </>
-      )}
-
-      <button
-        onClick={() => setShowPhotoModal(true)}
-        className="add-photo-button"
-      >
-        Agregar foto
-      </button>
-      {showPhotoModal && (
-        <Modal>
-          <ExercisePhoto
-            exerciseId={exerciseId}
-            onClose={() => setShowPhotoModal(false)}
-            onUpload={handleUploadSuccess}
-          />
-        </Modal>
-      )}
-      <Link to="#" onClick={() => window.history.back()}>
-        VOLVER
-      </Link>
+      <div className="buttons-container">
+        <button
+          onClick={() => setShowPhotoModal(true)}
+          className="add-photo-button"
+        >
+          Agregar foto
+        </button>
+        {showPhotoModal && (
+          <Modal>
+            <ExercisePhoto
+              exerciseId={exerciseId}
+              onClose={() => setShowPhotoModal(false)}
+              onUpload={handleUploadSuccess}
+            />
+          </Modal>
+        )}
+        <Link to="#" onClick={() => window.history.back()}>
+          VOLVER
+        </Link>
+      </div>
     </div>
   );
 };

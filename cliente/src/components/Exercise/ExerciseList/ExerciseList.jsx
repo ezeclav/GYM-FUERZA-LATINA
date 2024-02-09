@@ -55,7 +55,7 @@ function ExerciseList() {
       exercises.filter(
         (exercise) =>
           exercise.name.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
-          -1,
+          -1
       );
   } else {
     result = exercises;
@@ -72,7 +72,7 @@ function ExerciseList() {
         </Link>
       </div>
 
-      {/* <SearchBar searchHandler={searchHandler} /> */}
+      <SearchBar searchHandler={searchHandler} />
       {result.map(
         ({
           id_exercise,
@@ -93,7 +93,7 @@ function ExerciseList() {
             muscle_group={muscle_group}
             equipment={equipment}
           />
-        ),
+        )
       )}
     </div>
   );

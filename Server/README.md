@@ -104,3 +104,9 @@ _Puerto del servidor_
 _Direccion y puerto del Front_
 
 `ACTIVATION_URL`
+
+_Credenciales del servicio de Cloudinary_
+
+`CLOUDINARY_CLOUD_NAME`  
+`CLOUDINARY_API_KEY`  
+`CLOUDINARY_ACCES_KEY`
