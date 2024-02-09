@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import ExerciseCard from "../ExerciseCard/ExerciseCard";
 import SearchBar from "../../SearchBar";
-//import "./ExerciseList.css";
 import "./ExerciseList.css";
 
 function ExerciseList() {
@@ -68,7 +67,6 @@ function ExerciseList() {
         </Link>
       </div>
 
-      {/* <SearchBar searchHandler={searchHandler} /> */}
       {result.map(
         ({
           id_exercise,
