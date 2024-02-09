@@ -9,14 +9,14 @@ const selectExercisesByIdModel = async (exerciseId) => {
             FROM exercises e
             LEFT JOIN like_exercises l ON l.exerciseId = e.id_exercise
             WHERE e.id_exercise = ${exerciseId}
-    `
+    `,
   );
 
   const [photos] = await pool.query(
     `
       SELECT id_photo_exercise, name FROM photo_exercises WHERE exerciseId = ?
     `,
-    [exerciseId]
+    [exerciseId],
   );
 
   exercise[0].photos = photos;

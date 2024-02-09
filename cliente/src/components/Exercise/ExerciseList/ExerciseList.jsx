@@ -55,7 +55,7 @@ function ExerciseList() {
       exercises.filter(
         (exercise) =>
           exercise.name.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
-          -1
+          -1,
       );
   } else {
     result = exercises;
@@ -71,31 +71,30 @@ function ExerciseList() {
           <button>Crear Nuevo Ejercicio</button>
         </Link>
       </div>
-      <SearchBar searchHandler={searchHandler} />
-      <div className="exercise-list-container">
-        {result.map(
-          ({
-            id_exercise,
-            name,
-            photo,
-            description,
-            typology,
-            muscle_group,
-            equipment,
-          }) => (
-            <ExerciseCard
-              key={id_exercise}
-              id={id_exercise}
-              name={name}
-              photo={photo}
-              description={description}
-              typology={typology}
-              muscle_group={muscle_group}
-              equipment={equipment}
-            />
-          )
-        )}
-      </div>
+
+      {/* <SearchBar searchHandler={searchHandler} /> */}
+      {result.map(
+        ({
+          id_exercise,
+          name,
+          photo,
+          description,
+          typology,
+          muscle_group,
+          equipment,
+        }) => (
+          <ExerciseCard
+            key={id_exercise}
+            id={id_exercise}
+            name={name}
+            photo={photo}
+            description={description}
+            typology={typology}
+            muscle_group={muscle_group}
+            equipment={equipment}
+          />
+        ),
+      )}
     </div>
   );
 }

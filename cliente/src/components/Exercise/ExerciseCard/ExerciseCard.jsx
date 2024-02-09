@@ -3,23 +3,15 @@ import "./ExerciseCard.css";
 // import { AuthContext } from "../../../context/AuthContext";
 
 //const admin = useContext(AuthContext);
-
-function ExerciseCard({
-  id,
-  name,
-  description,
-  photo,
-  typology,
-  muscle_group,
-  equipment,
-}) {
+const defaultExercise = "https://placehold.co/90x90.png";
+function ExerciseCard({ id, name, typology, muscle_group, equipment, photos }) {
+  console.log(ExerciseCard);
   return (
     <div className="exercise-list-card">
       <div className="exercise-details">
         <Link to={`/exercise/${id}`} className="exercise-link">
           <h3 className="exercise-nombre">{name}</h3>
-          <p className="exercise-foto">{photo}</p>
-
+          <img src={defaultExercise}></img>
           <p className="exercise-tipologia">{typology}</p>
           <p className="exercise-grupo-muscular">{muscle_group}</p>
           <p className="exercise-equipo">{equipment}</p>

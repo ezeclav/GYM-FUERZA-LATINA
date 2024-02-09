@@ -18,7 +18,7 @@ server.use(morgan("dev"));
 server.use(express.json());
 server.use(cors()); //acepta pedidos desde cualquier IP
 server.use(express.static(UPLOADS_DIR));
-server.use(fileUpload());
+server.use(fileUpload({ useTempFiles: true }));
 
 //middleware de rutas
 server.use("/api", routes);
