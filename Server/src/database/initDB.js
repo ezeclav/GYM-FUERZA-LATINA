@@ -38,7 +38,7 @@ const initDB = async () => {
     console.log("Eliminando tablas...");
     await pool.query(`USE ${MYSQL_DATABASE}`);
     await pool.query(
-      "DROP TABLE IF EXISTS like_exercises, photo_exercises, exercises, users"
+      "DROP TABLE IF EXISTS like_exercises, photo_exercises, exercises, users",
     );
 
     console.log("Creando tablas...");
@@ -77,7 +77,7 @@ const initDB = async () => {
     await pool.query(`
             CREATE TABLE IF NOT EXISTS photo_exercises (
                 id_photo_exercise INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                name VARCHAR(50) NOT NULL,
+                name VARCHAR(250) NOT NULL,
                 exerciseId INT NOT NULL,
                 FOREIGN KEY (exerciseId) REFERENCES exercises(id_exercise)
             )
