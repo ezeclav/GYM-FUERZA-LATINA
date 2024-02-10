@@ -1,37 +1,51 @@
-import React, { useState } from "react";
-import AddExerciseLike from "../AddExerciseLike";
-import DeleteExerciseLike from "../DeleteExerciseLike";
+import React, { useState, useEffect } from "react";
 
-const LikeToggle = (id) => {
-  const [isLiked, setIsLiked] = useState(false);
-  const [clicked, setClicked] = useState(false);
+const LikeToggle = ({ exerciseId }) => {
+  // Obtener el estado inicial del like del localStorage al cargar el componente
+  const storedLike = localStorage.getItem(`exercise-${exerciseId}`);
+  const [isLiked, setIsLiked] = useState(storedLike === "true");
 
-  const handleLikeToggle = () => {
-    setIsLiked((prevIsLiked) => !prevIsLiked);
-    setClicked(true);
+  const handleLikeToggle = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (isLiked) {
+        await fetch(`/api/dislike/${exerciseId}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: token,
+          },
+        });
+      } else {
+        await fetch(`/api/exercise/like/${exerciseId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        });
+      }
+      // Toggle del estado y almacenar en el localStorage
+      setIsLiked((prevIsLiked) => !prevIsLiked);
+      localStorage.setItem(`exercise-${exerciseId}`, (!isLiked).toString());
+    } catch (error) {
+      console.error("Error de red:", error);
+    }
   };
-  console.log(id);
+
+  // Usar useEffect para actualizar el estado cuando cambia el valor en localStorage
+  useEffect(() => {
+    const storedLike = localStorage.getItem(`exercise-${exerciseId}`);
+    setIsLiked(storedLike === "true");
+  }, [exerciseId]);
+
   return (
     <div>
-      {/* Icono de corazón que cambia al hacer clic */}
       <span
         onClick={handleLikeToggle}
         style={{ cursor: "pointer", color: isLiked ? "red" : "black" }}
       >
-        &#10084; {/* Código de corazón */}
+        &#10084;
       </span>
-
-      {/* Renderizar el componente correspondiente según el estado */}
-      {clicked && (
-        <div>
-          {isLiked ? (
-            <AddExerciseLike exerciseId={id} />
-          ) : (
-            <DeleteExerciseLike exerciseId={id} />
-          )}
-          {/* Otro contenido que deseas renderizar después de hacer clic */}
-        </div>
-      )}
     </div>
   );
 };
