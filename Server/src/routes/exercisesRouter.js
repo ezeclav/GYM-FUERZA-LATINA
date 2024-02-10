@@ -75,7 +75,7 @@ router.post(
 
 // Para darle LIKE a un ejercicio
 router.post(
-  "/exercises/like/:exerciseId",
+  "/exercise/like/:exerciseId",
   authUserController,
   userExistsController,
   likeExerciseController,

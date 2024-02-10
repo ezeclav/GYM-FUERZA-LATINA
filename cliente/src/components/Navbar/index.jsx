@@ -35,6 +35,11 @@ function Navbar() {
                 Ejercicios
               </Link>
             </li>
+            <li>
+              <Link to="/favorites" onClick={closeMenu}>
+                Favorites
+              </Link>
+            </li>
             <li onClick={logout}>
               <Link to="/" onClick={closeMenu}>
                 Salir
