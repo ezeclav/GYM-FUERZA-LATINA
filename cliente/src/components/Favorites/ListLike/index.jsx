@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import ExerciseCard from "../../Exercise/ExerciseCard/ExerciseCard";
+import ExerciseCard from "../../exercise/ExerciseCard/ExerciseCard";
 
 function ListLike() {
   const [exercises, setExercises] = useState([]);
@@ -21,7 +21,11 @@ function ListLike() {
         };
         const response = await axios.get("/api/listlikes", options);
 
-        const reversedExercises = response.data.data.reverse();
+        // Enlistar de manera descendente:
+        const reversedExercises = response.data.data;
+
+        // Enlistar de manera ascendente con RESERVE()
+        // const reversedExercises = response.data.data.reverse();
 
         setExercises(reversedExercises);
       } catch (err) {
@@ -48,7 +52,7 @@ function ListLike() {
       exercises.filter(
         (exercise) =>
           exercise.title.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
-          -1,
+          -1
       );
   } else {
     result = exercises;
@@ -80,7 +84,7 @@ function ListLike() {
             muscle_group={muscle_group}
             equipment={equipment}
           />
-        ),
+        )
       )}
     </div>
   );

@@ -10,7 +10,7 @@ const LikeToggle = (id) => {
     setIsLiked((prevIsLiked) => !prevIsLiked);
     setClicked(true);
   };
-  console.log(id);
+  // console.log(id);
   return (
     <div>
       {/* Icono de corazón que cambia al hacer clic */}

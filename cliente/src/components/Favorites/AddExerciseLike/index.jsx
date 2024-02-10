@@ -15,7 +15,7 @@ const AddExerciseLike = ({ exerciseId }) => {
               "Content-Type": "application/json",
               Authorization: token,
             },
-          },
+          }
         );
       } catch (error) {
         console.error("Error de red:", error);
@@ -26,10 +26,9 @@ const AddExerciseLike = ({ exerciseId }) => {
     handleAddLike();
   }, [exerciseId]);
 
-  // Puedes mostrar un mensaje u otro contenido si lo deseas
   return (
     <div>
-      <h1>Agregado a Favoritos</h1>
+      <p>Agregado a Favoritos</p>
     </div>
   );
 };

@@ -29,10 +29,9 @@ const DeleteExerciseLike = ({ exerciseId }) => {
     handleDeleteLike();
   }, [exerciseId]);
 
-  // Puedes mostrar un mensaje u otro contenido si lo deseas
   return (
     <div>
-      <h1>Eliminado de Favoritos</h1>
+      <p>Eliminado de Favoritos</p>
     </div>
   );
 };
