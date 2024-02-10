@@ -70,6 +70,10 @@ function ExerciseList() {
         </Link>
       </div>
 
+<<<<<<< HEAD
+=======
+      <SearchBar searchHandler={searchHandler} />
+>>>>>>> Gustavo
       {result.map(
         ({
           id_exercise,
