@@ -72,10 +72,7 @@ function ExerciseList() {
         </Link>
       </div>
 
-<<<<<<< HEAD
       <SearchBar searchHandler={searchHandler} />
-=======
->>>>>>> 71b60c271f0a3bbaad8973fc40545f422737a502
       {result.map(
         ({
           id_exercise,

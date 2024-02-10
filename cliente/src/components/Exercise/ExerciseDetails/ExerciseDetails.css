@@ -1,5 +1,4 @@
 .exercise-details-container {
-<<<<<<< HEAD
   margin-top: 1rem;
   display: flex;
   align-items: center;
@@ -37,16 +36,4 @@
 }
 .buttons-container button {
   margin-right: 30px;
-=======
-  width: 500px;
-  height: 300px;
-  padding: 20px;
-}
-
-.exercise-details {
-  height: fit-content;
-  border: 7px solid #000;
-  border-radius: 30px;
-  padding: 10px;
->>>>>>> 71b60c271f0a3bbaad8973fc40545f422737a502
 }
