@@ -69,31 +69,33 @@ function ExerciseList() {
         <Link to="/NewExercise" className="exerc-link">
           <button>Crear Nuevo Ejercicio</button>
         </Link>
+        <SearchBar searchHandler={searchHandler} />
       </div>
 
-      <SearchBar searchHandler={searchHandler} />
-      {result.map(
-        ({
-          id_exercise,
-          name,
-          photo,
-          description,
-          typology,
-          muscle_group,
-          equipment,
-        }) => (
-          <ExerciseCard
-            key={id_exercise}
-            id={id_exercise}
-            name={name}
-            photo={photo}
-            description={description}
-            typology={typology}
-            muscle_group={muscle_group}
-            equipment={equipment}
-          />
-        )
-      )}
+      <div className="exercise-list-container">
+        {result.map(
+          ({
+            id_exercise,
+            name,
+            // photo,
+            description,
+            typology,
+            muscle_group,
+            equipment,
+          }) => (
+            <ExerciseCard
+              key={id_exercise}
+              id={id_exercise}
+              name={name}
+              // photo={photo}
+              description={description}
+              typology={typology}
+              muscle_group={muscle_group}
+              equipment={equipment}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 }
