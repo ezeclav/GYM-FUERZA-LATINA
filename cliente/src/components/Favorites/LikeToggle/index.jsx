@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./likeToogle.css";
 
 const LikeToggle = ({ exerciseId }) => {
   // Obtener el estado inicial del like del localStorage al cargar el componente
@@ -41,6 +42,7 @@ const LikeToggle = ({ exerciseId }) => {
   return (
     <div>
       <span
+        className="like-toggle-heart"
         onClick={handleLikeToggle}
         style={{ cursor: "pointer", color: isLiked ? "red" : "black" }}
       >

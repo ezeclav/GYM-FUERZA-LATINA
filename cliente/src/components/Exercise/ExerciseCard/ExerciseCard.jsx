@@ -15,8 +15,8 @@ function ExerciseCard({ id, name, typology, muscle_group, equipment, photos }) {
           <p className="exercise-grupo-muscular">{muscle_group}</p>
           <p className="exercise-equipo">{equipment}</p>
         </Link>
+        <LikeToggle exerciseId={id} />
       </div>
-      <LikeToggle exerciseId={id} />
     </div>
   );
 }
