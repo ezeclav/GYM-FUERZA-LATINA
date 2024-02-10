@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import axios from "axios";
 import Modal from "../../Modal";
-import "./ExerciseDetails.css";
 import ExercisePhoto from "../ExercisePhoto/ExercisePhoto";
 
 const ExerciseDetails = () => {
@@ -26,7 +25,7 @@ const ExerciseDetails = () => {
         };
         const response = await axios.get(
           `/api/exercise/${exerciseId}`,
-          options
+          options,
         );
         setExercise(response.data.data);
       } catch (err) {

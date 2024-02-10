@@ -17,14 +17,6 @@ const AddExerciseLike = ({ exerciseId }) => {
             },
           },
         );
-
-        if (!response.ok) {
-          console.error("Error al procesar la solicitud");
-        } else {
-          // Maneja la respuesta del servidor, si es necesario
-          const data = await response.json();
-          console.log("Respuesta del servidor:", data);
-        }
       } catch (error) {
         console.error("Error de red:", error);
       }
