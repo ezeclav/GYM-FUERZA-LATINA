@@ -6,9 +6,6 @@ const getUserProfileController = async (req, res, next) => {
 
     const user = await selectUserByIdModel(userId);
 
-    // Eliminamos los datos privados del usuario. (opcional)
-    // delete user.email;
-
     res.send({
       status: "ok",
       data: {

@@ -1,12 +1,10 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthContext";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Modal from "../../Modal";
-import "./ExerciseDetails.css";
-import ExercisePhoto from "../ExercisePhoto/ExercisePhoto";
+import ExercisePhoto from "../../Exercise/ExercisePhoto/ExercisePhoto";
 
-const ExerciseDetails = () => {
+const ListLike = () => {
   const { exerciseId } = useParams();
   const [exercise, setExercise] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -18,17 +16,15 @@ const ExerciseDetails = () => {
     const fetchExercises = async () => {
       try {
         const token = localStorage.getItem("token");
-        // console.log(exerciseId);
+        console.log(exerciseId);
         const options = {
           headers: {
             Authorization: token,
           },
         };
-        const response = await axios.get(
-          `/api/exercise/${exerciseId}`,
-          options
-        );
+        const response = await axios.get(`/api/listlikes`, options);
         setExercise(response.data.data);
+        console.log(response.data.data);
       } catch (err) {
         setError(err);
       } finally {
@@ -91,11 +87,8 @@ const ExerciseDetails = () => {
           />
         </Modal>
       )}
-      <Link to="#" onClick={() => window.history.back()}>
-        VOLVER
-      </Link>
     </div>
   );
 };
 
-export default ExerciseDetails;
+export default ListLike;
