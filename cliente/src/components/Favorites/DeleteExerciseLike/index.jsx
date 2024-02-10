@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const AddExerciseLike = ({ exerciseId }) => {
+const DeleteExerciseLike = ({ exerciseId }) => {
   useEffect(() => {
     const handleDeleteLike = async () => {
       try {
@@ -37,4 +37,4 @@ const AddExerciseLike = ({ exerciseId }) => {
   );
 };
 
-export default AddExerciseLike;
+export default DeleteExerciseLike;

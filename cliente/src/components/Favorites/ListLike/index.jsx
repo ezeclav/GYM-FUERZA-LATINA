@@ -1,94 +1,89 @@
-import { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import Modal from "../../Modal";
-import ExercisePhoto from "../../Exercise/ExercisePhoto/ExercisePhoto";
+import ExerciseCard from "../../Exercise/ExerciseCard/ExerciseCard";
 
-const ListLike = () => {
-  const { exerciseId } = useParams();
-  const [exercise, setExercise] = useState(null);
+function ListLike() {
+  const [exercises, setExercises] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showPhotoModal, setShowPhotoModal] = useState(false);
-  const [photos, setPhotos] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   useEffect(() => {
     const fetchExercises = async () => {
       try {
         const token = localStorage.getItem("token");
-        console.log(exerciseId);
+
         const options = {
           headers: {
             Authorization: token,
           },
         };
-        const response = await axios.get(`/api/listlikes`, options);
-        setExercise(response.data.data);
-        console.log(response.data.data);
+        const response = await axios.get("/api/listlikes", options);
+
+        const reversedExercises = response.data.data.reverse();
+
+        setExercises(reversedExercises);
       } catch (err) {
-        setError(err);
+        setError(err.response.data.message);
       } finally {
         setLoading(false);
       }
     };
-
     fetchExercises();
-  }, [exerciseId]);
+  }, []);
 
-  const handleUploadSuccess = (newPhotos) => {
-    setPhotos([...photos, newPhotos]);
+  let result;
+
+  const searchHandler = (e) => {
+    const searchString = e.target.value;
+    searchString.length > 1
+      ? setSearchKeyword(searchString)
+      : setSearchKeyword("");
   };
 
-  if (!exercise) {
-    return <div>Cargando...</div>;
+  if (searchKeyword !== "") {
+    result =
+      exercises &&
+      exercises.filter(
+        (exercise) =>
+          exercise.title.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
+          -1,
+      );
+  } else {
+    result = exercises;
   }
 
-  const { name, description, typology, muscle_group, equipment } = exercise;
-
   return (
-    <div className="exercise-details-container">
-      <div className="foto-list">
-        {exercise.photos &&
-          exercise.photos.map((photo) => (
-            <img
-              key={photo.id_photo_exercise}
-              src={photo.name}
-              alt={`photo ${photo.id_photo_exercise}`}
-              className="exercise-foto"
-            />
-          ))}
-      </div>
-      {error && <p>{error}</p>}
-      {loading && <h1>LOADING ...</h1>}
-      {exercise && (
-        <>
-          <h2 className="exercise-nombre">Nombre: {name}</h2>
-          <h3 className="exercise-descripcion">Descripcion: {description}</h3>
-          <p className="exercise-tipologia">Tipología: {typology}</p>
-          <p className="exercise-grupoMuscular">
-            Grupo Muscular: {muscle_group}
-          </p>
-          <p className="exercise-equipo">Equipo: {equipment}</p>
-        </>
-      )}
+    <div className="exercise-list-container">
+      {error && <p className="error-message">{error}</p>}
 
-      <button
-        onClick={() => setShowPhotoModal(true)}
-        className="add-photo-button"
-      >
-        Agregar foto
-      </button>
-      {showPhotoModal && (
-        <Modal>
-          <ExercisePhoto
-            exerciseId={exerciseId}
-            onClose={() => setShowPhotoModal(false)}
-            onUpload={handleUploadSuccess}
+      {loading && <h1 className="loading-message">LOADING ...</h1>}
+
+      {result.map(
+        ({
+          id_exercise,
+          name,
+          id_photo_exercise,
+          description,
+          typology,
+          muscle_group,
+          equipment,
+        }) => (
+          <ExerciseCard
+            key={id_exercise}
+            id={id_exercise}
+            name={name}
+            photo={id_photo_exercise}
+            description={description}
+            typology={typology}
+            muscle_group={muscle_group}
+            equipment={equipment}
           />
-        </Modal>
+        ),
       )}
     </div>
   );
-};
+}
 
 export default ListLike;
