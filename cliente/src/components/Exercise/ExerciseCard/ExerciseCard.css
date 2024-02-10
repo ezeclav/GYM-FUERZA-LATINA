@@ -11,3 +11,10 @@
   border-radius: 30px;
   padding: 10px;
 }
+
+.photo-container {
+  display: flex;
+  justify-content: center;
+  width: auto;
+  height: 90px;
+}
