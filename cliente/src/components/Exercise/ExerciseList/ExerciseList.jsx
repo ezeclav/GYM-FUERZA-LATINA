@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ExerciseCard from "../ExerciseCard/ExerciseCard";
+import SearchBar from "../../SearchBar";
 import "./ExerciseList.css";
 
 function ExerciseList() {
@@ -53,7 +54,7 @@ function ExerciseList() {
       exercises.filter(
         (exercise) =>
           exercise.name.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
-          -1,
+          -1
       );
   } else {
     result = exercises;
@@ -70,10 +71,7 @@ function ExerciseList() {
         </Link>
       </div>
 
-<<<<<<< HEAD
-=======
       <SearchBar searchHandler={searchHandler} />
->>>>>>> Gustavo
       {result.map(
         ({
           id_exercise,
@@ -94,7 +92,7 @@ function ExerciseList() {
             muscle_group={muscle_group}
             equipment={equipment}
           />
-        ),
+        )
       )}
     </div>
   );

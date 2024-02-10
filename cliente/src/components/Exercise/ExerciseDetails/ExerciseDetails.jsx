@@ -5,6 +5,8 @@ import axios from "axios";
 import Modal from "../../Modal";
 import ExercisePhoto from "../ExercisePhoto/ExercisePhoto";
 
+import "./ExerciseDetails.css";
+
 const ExerciseDetails = () => {
   const { exerciseId } = useParams();
   const [exercise, setExercise] = useState(null);
@@ -25,7 +27,7 @@ const ExerciseDetails = () => {
         };
         const response = await axios.get(
           `/api/exercise/${exerciseId}`,
-          options,
+          options
         );
         setExercise(response.data.data);
       } catch (err) {
