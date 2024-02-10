@@ -2,9 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import axios from "axios";
-//import ExercisePhoto from "../ExercisePhoto"; <---------- TIRA ERROR. POR SOLUCIONAR
 import Modal from "../../Modal";
-//import ExerciseLike from '../ExerciseLike'; <------------ TIRA ERROR. POR SOLUCIONAR
 import "./ExerciseDetails.css";
 import ExercisePhoto from "../ExercisePhoto/ExercisePhoto";
 

@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import "./ExerciseCard.css";
-// import { AuthContext } from "../../../context/AuthContext";
+import { AuthContext } from "../../../context/AuthContext";
 
-//const admin = useContext(AuthContext);
 const defaultExercise = "https://placehold.co/90x90.png";
 function ExerciseCard({ id, name, typology, muscle_group, equipment, photos }) {
   // console.log(ExerciseCard);
@@ -17,6 +16,7 @@ function ExerciseCard({ id, name, typology, muscle_group, equipment, photos }) {
           <p className="exercise-equipo">{equipment}</p>
         </Link>
       </div>
+      <LikeToggle exerciseId={id} />
     </div>
   );
 }

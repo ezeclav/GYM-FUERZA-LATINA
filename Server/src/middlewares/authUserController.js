@@ -13,9 +13,8 @@ const authUserController = (req, res, next) => {
     }
 
     try {
-      // console.log(authorization);
       const tokenInfo = jwt.verify(authorization, process.env.SECRET);
-      // console.log(tokenInfo);
+
       req.user = tokenInfo;
 
       next();

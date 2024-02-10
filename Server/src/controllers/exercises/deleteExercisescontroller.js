@@ -12,7 +12,6 @@ const deleteExercisescontroller = async (req, res, next) => {
 
     const { name } = exercise[0];
 
-    // console.log("borrando foto:", name);
     await deletePhotoService(name);
 
     res.send({

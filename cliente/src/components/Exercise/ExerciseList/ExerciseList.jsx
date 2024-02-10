@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import ExerciseCard from "../ExerciseCard/ExerciseCard";
 import SearchBar from "../../SearchBar";
-//import "./ExerciseList.css";
 import "./ExerciseList.css";
+import LikeToggle from "../../Favorites/LikeToggle";
 
 function ExerciseList() {
   const [exercises, setExercises] = useState([]);
@@ -72,7 +72,10 @@ function ExerciseList() {
         </Link>
       </div>
 
+<<<<<<< HEAD
       <SearchBar searchHandler={searchHandler} />
+=======
+>>>>>>> 71b60c271f0a3bbaad8973fc40545f422737a502
       {result.map(
         ({
           id_exercise,
@@ -82,6 +85,7 @@ function ExerciseList() {
           typology,
           muscle_group,
           equipment,
+          exerciseId,
         }) => (
           <ExerciseCard
             key={id_exercise}

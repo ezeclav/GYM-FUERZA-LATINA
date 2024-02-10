@@ -74,8 +74,6 @@ function NewExercise() {
           />
         </div>
 
-        <ExercisePhoto />
-
         <div className="form-group">
           <label htmlFor="descrpition">Descripción: </label>
           <textarea

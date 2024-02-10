@@ -16,7 +16,7 @@ const cantEditController = async (req, res, next) => {
   try {
     const tokenInfo = jwt.verify(authorization, process.env.SECRET);
     if (tokenInfo.role !== "admin") unauthorizedUserError();
-    // console.log(tokenInfo);
+
     req.user = tokenInfo;
 
     next();

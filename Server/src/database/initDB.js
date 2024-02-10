@@ -38,7 +38,7 @@ const initDB = async () => {
     console.log("Eliminando tablas...");
     await pool.query(`USE ${MYSQL_DATABASE}`);
     await pool.query(
-      "DROP TABLE IF EXISTS like_exercises, photo_exercises, exercises, users"
+      "DROP TABLE IF EXISTS like_exercises, photo_exercises, exercises, users",
     );
 
     console.log("Creando tablas...");
