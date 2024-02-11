@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const ExerciseModify = () => {
   const { exerciseId } = useParams();
@@ -13,9 +14,16 @@ const ExerciseModify = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    options();
     try {
-      await axios.put(`/api/modifExercise/${exerciseId}`, {
+      const token = localStorage.getItem("token");
+
+      const options = {
+        headers: {
+          Authorization: token,
+        },
+      };
+
+      await axios.put(`/api/modifExercise/${exerciseId}`, options, {
         headers: {
           Authorization: token
         }
@@ -57,15 +65,35 @@ const ExerciseModify = () => {
           />
         </label>
 
-        <label>
-          Tipología:
+        <label htmlFor="typology">Tipología:</label>
           <input
-            type="text"
+            required
+            type="radio"
+            id="typologyFuerza"
             name="typology"
-            value={exercise.typology}
+            value="Fuerza"
             onChange={handleChange}
+            checked={formData.typology === "Fuerza"}
           />
-        </label>
+          Fuerza
+          <input
+            type="radio"
+            id="typologyPotencia"
+            name="typology"
+            value="Potencia"
+            onChange={handleChange}
+            checked={formData.typology === "Potencia"}
+          />
+          Potencia
+          <input
+            type="radio"
+            id="typologyResistencia"
+            name="typology"
+            value="Resistencia"
+            onChange={handleChange}
+            checked={formData.typology === "Resistencia"}
+          />
+          Resistencia
         <label>
           Grupo Muscular:
           <input
