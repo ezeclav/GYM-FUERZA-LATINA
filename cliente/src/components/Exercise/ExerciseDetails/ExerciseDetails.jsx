@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthContext";
 import axios from "axios";
 import Modal from "../../Modal";
 import ExercisePhoto from "../ExercisePhoto/ExercisePhoto";
+import ExerciseModify from "../ExerciseModify/ExerciseModify"
 
 import "./ExerciseDetails.css";
 
@@ -13,13 +13,13 @@ const ExerciseDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showPhotoModal, setShowPhotoModal] = useState(false);
+  const [showModifyModal, setShowModifyModal] = useState(false);
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
     const fetchExercises = async () => {
       try {
         const token = localStorage.getItem("token");
-        // console.log(exerciseId);
         const options = {
           headers: {
             Authorization: token,
@@ -106,6 +106,25 @@ const ExerciseDetails = () => {
             />
           </Modal>
         )}
+        {/*MODAL MODIFICAR EJERCICIO*/}
+        <button
+          onClick={() => setShowModifyModal(true)}
+          className="add-photo-button"
+        >
+          Editar
+        </button>
+
+              
+        {showModifyModal && (
+          <Modal>
+            <ExerciseModify
+              exerciseId={exerciseId}
+              onClose={() => setShowModifyModal(false)}
+              onUpload={handleUploadSuccess}
+            />
+          </Modal>
+        )}
+
         <Link to="#" onClick={() => window.history.back()}>
           VOLVER
         </Link>
