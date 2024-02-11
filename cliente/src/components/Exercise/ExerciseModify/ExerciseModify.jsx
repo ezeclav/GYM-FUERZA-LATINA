@@ -15,7 +15,7 @@ const ExerciseModify = () => {
           },
         });
       } catch (error) {
-        console.error("Error al modificar el ejercicio:", error);
+        console.error("Error al modificar:", error);
       }
     };
   });

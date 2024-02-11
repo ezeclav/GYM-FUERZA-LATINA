@@ -3,6 +3,7 @@ import ExerciseDelete from "../../components/Exercise/ExerciseDelete/ExerciseDel
 const DeleteExercise = () => {
   return (
     <div>
+      <h1>Borrar Ejercicio</h1>
       <ExerciseDelete />
     </div>
   );
