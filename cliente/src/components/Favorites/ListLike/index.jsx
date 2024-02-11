@@ -68,7 +68,7 @@ function ListLike() {
         ({
           id_exercise,
           name,
-          id_photo_exercise,
+          photoName,
           description,
           typology,
           muscle_group,
@@ -78,7 +78,8 @@ function ListLike() {
             key={id_exercise}
             id={id_exercise}
             name={name}
-            photo={id_photo_exercise}
+            // photos={photos.map((photo) => photo.name)}
+            photos={photoName}
             description={description}
             typology={typology}
             muscle_group={muscle_group}

@@ -11,18 +11,25 @@ function ExerciseCard({ id, name, typology, muscle_group, equipment, photos }) {
       <div className="exercise-details">
         <Link to={`/exercise/${id}`} className="exercise-link">
           <h3 className="exercise-nombre">{name}</h3>
-          {photos.length > 0 ? (
-            <div className="photo-container">
-              {photos.map((photo, index) => (
-                <img key={index} src={photo} alt={`Exercise ${name}`} />
-              ))}
-            </div>
+
+          {Array.isArray(photos) ? (
+            photos.length > 0 ? (
+              <div className="photo-container">
+                {photos.map((photo, index) => (
+                  <img key={index} src={photo} alt={`Exercise ${name}`} />
+                ))}
+              </div>
+            ) : (
+              <div className="photo-container">
+                <img src={defaultExercise} alt="" />
+              </div>
+            )
           ) : (
             <div className="photo-container">
-              <img src={defaultExercise} alt="" />
+              <img src={photos} alt={`Exercise ${photos}`} />
             </div>
           )}
-          {/* <img src={photos[0] ? "" : defaultExercise}></img> */}
+
           <p className="exercise-tipologia">
             <span className="underline">Tipología:</span>&nbsp; {typology}
           </p>

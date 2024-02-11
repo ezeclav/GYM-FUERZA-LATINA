@@ -9,9 +9,18 @@ const listLikesController = async (req, res, next) => {
 
     const [likes] = await pool.query(
       `
-      SELECT e.id_exercise, e.name, e.description, e.typology, e.muscle_group, e.equipment
+      SELECT 
+        e.id_exercise, 
+        e.name, 
+        e.description, 
+        e.typology, 
+        e.muscle_group, 
+        e.equipment,
+        pe.id_photo_exercise AS photoId,
+        pe.name AS photoName
       FROM like_exercises l
       JOIN exercises e ON l.exerciseId = e.id_exercise
+      LEFT JOIN photo_exercises pe ON e.id_exercise = pe.exerciseId
       WHERE l.userId = ?
       `,
       [userId]
