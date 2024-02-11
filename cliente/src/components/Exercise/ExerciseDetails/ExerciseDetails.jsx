@@ -4,6 +4,7 @@ import axios from "axios";
 import Modal from "../../Modal";
 import ExercisePhoto from "../ExercisePhoto/ExercisePhoto";
 import ExerciseModify from "../ExerciseModify/ExerciseModify"
+import ExerciseDelete from "../ExerciseDelete/ExerciseDelete";
 
 import "./ExerciseDetails.css";
 
@@ -14,6 +15,7 @@ const ExerciseDetails = () => {
   const [error, setError] = useState(null);
   const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [showModifyModal, setShowModifyModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
@@ -120,6 +122,25 @@ const ExerciseDetails = () => {
             <ExerciseModify
               exerciseId={exerciseId}
               onClose={() => setShowModifyModal(false)}
+              onUpload={handleUploadSuccess}
+            />
+          </Modal>
+        )}
+
+        {/*MODAL ELIMINAR EJERCICIO*/}
+        <button
+          onClick={() => setShowDeleteModal(true)}
+          className="add-photo-button"
+        >
+          Eliminar
+        </button>
+
+              
+        {showDeleteModal && (
+          <Modal>
+            <ExerciseDelete
+              exerciseId={exerciseId}
+              onClose={() => setShowDeleteModal(false)}
               onUpload={handleUploadSuccess}
             />
           </Modal>

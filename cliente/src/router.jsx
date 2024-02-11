@@ -8,6 +8,7 @@ import NewExercisePage from "./pages/NewExercise/NewExercise";
 import ExerciseList2 from "./pages/ExerciseList/ExerciseList";
 import ExerciseDetails from "./components/exercise/ExerciseDetails/ExerciseDetails";
 import ListLike from "./components/Favorites/ListLike";
+import DeleteExercise from "./pages/ExerciseDelete/ExerciseDelete";
 
 const router = createBrowserRouter([
   {
@@ -40,8 +41,8 @@ const router = createBrowserRouter([
         element: <ExerciseDetails />,
       },
       {
-        path: "exercise/:exerciseId",
-        element: <ExerciseDetails />,
+        path: "/deleteExercise/:exerciseId",
+        element: <DeleteExercise />,
       },
       {
         path: "favorites",
