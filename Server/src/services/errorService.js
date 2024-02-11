@@ -57,7 +57,7 @@ export const photoLimitReachedError = () => {
   throw {
     httpStatus: 409, // Conflict
     code: "PHOTO_LIMIT_REACHED",
-    message: "Se ha alcanzado el límite de tres fotos en la entrada",
+    message: "Se ha alcanzado el limite Maximo de Fotos",
   };
 };
 
