@@ -9,8 +9,9 @@ const exerciseExistsController = async (req, res, next) => {
 
     const [exercise] = await pool.query(
       `
-                SELECT id_exercise FROM exercises WHERE id_exercise = ${exerciseId}
-            `
+                SELECT id_exercise FROM exercises WHERE id_exercise = ?
+            `,
+            [exerciseId]
     );
 
     if (exercise.length < 1) notFoundError("Ejercicio");

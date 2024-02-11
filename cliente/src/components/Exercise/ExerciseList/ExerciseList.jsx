@@ -54,6 +54,9 @@ function ExerciseList() {
       exercises.filter(
         (exercise) =>
           exercise.name.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
+          -1 || exercise.typology.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
+          -1 || exercise.muscle_group.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
+          -1 || exercise.equipment.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
           -1
       );
   } else {
