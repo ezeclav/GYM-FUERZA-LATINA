@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./likeToogle.css";
 
 const LikeToggle = ({ exerciseId }) => {
-  // Obtener el estado inicial del like del localStorage al cargar el componente
+  // Obtener el estado inicial del like del localStorage
   const storedLike = localStorage.getItem(`exercise-${exerciseId}`);
   const [isLiked, setIsLiked] = useState(storedLike === "true");
 
