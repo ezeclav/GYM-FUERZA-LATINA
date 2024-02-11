@@ -45,14 +45,14 @@ function NewExercise() {
       });
       // console.log("New exercise created:", response.data);
       if (response.data.status === "ok") {
-        // navigate("/");
+        navigate("/exercise");
         SetOkExercise("Ejercicio creado con EXITO..!!!");
       }
     } catch (error) {
       console.error("Error al crear un nuevo ejercicio:", error);
       const noOk = error.response.data.message;
       SetOkExercise(
-        `ERROR al crear el ejercicio....intente nuevamente: ${noOk}`
+        `ERROR al crear el ejercicio....intente nuevamente: ${noOk}`,
       );
     }
   };

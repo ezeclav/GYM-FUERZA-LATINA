@@ -1,11 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 import Auth from "../../../utils/auth";
+import { useNavigate } from "react-router-dom";
 import "./ExercisePhoto.css";
 
 function ExercisePhoto({ exerciseId, onUpload, onClose }) {
   const [file, setFile] = useState(null);
-
+  const navigate = useNavigate();
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
@@ -31,8 +32,7 @@ function ExercisePhoto({ exerciseId, onUpload, onClose }) {
           },
         },
       );
-      onUpload();
-      onClose();
+      navigate("/exercise/");
     } catch (error) {
       console.error("Error al cargar la foto:", error);
     }
