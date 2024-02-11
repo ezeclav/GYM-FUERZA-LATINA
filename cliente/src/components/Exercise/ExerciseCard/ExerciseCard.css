@@ -7,9 +7,10 @@
 
 .exercise-details {
   height: fit-content;
-  border: 7px solid #000;
+  border: 2px solid #000;
   border-radius: 30px;
-  padding: 10px;
+  padding: 15px;
+  margin: 20px;
 }
 
 .photo-container {
