@@ -9,18 +9,12 @@ const addEntryPhotoController = async (req, res, next) => {
     // Obtenemos el id de al entrada de los path params.
     const { exerciseId } = req.params;
 
-    // Validamos el body con Joi. Dado que "files" podría no existir enviamos un objeto vacío
-    // si se da el caso.
-
-    //await validateSchemaUtil(addExercisePhotoSchema, req.files.photo || {});
-
     // // Obtenemos la información de la entrada para comprobar si somos los propietarios.
-    // const exercise = await selectExerciseByIdModel(exerciseId);
+    const exercise = await selectExerciseByIdModel(exerciseId);
 
-    // // Si la entrada tiene más de tres fotos lanzamos un error.
-    // if (exercise.photo.length > 2) {
-    //   photoLimitReachedError();
-    // }
+    if (exercise.photos.length > 0) {
+      photoLimitReachedError();
+    }
 
     const photoName = await cloudinaryService(req.files.photo);
 
