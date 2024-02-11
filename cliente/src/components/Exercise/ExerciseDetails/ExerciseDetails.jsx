@@ -27,7 +27,7 @@ const ExerciseDetails = () => {
         };
         const response = await axios.get(
           `/api/exercise/${exerciseId}`,
-          options
+          options,
         );
         setExercise(response.data.data);
       } catch (err) {

@@ -5,16 +5,20 @@ import ExerciseDetails from "../ExerciseDetails/ExerciseDetails";
 const ExerciseModify = () => {
   const { exerciseId } = useParams();
 
-  useEffect(() => { async () => {
+  useEffect(() => {
+    async () => {
       const token = auth.getToken();
       try {
         await axios.post("api/modifExercise/:exerciseId", null, {
           headers: {
             Authorization: token,
           },
-        })}catch (error) {
-          console.error("Error al modificar el ejercicio:", error);}
-  }});
+        });
+      } catch (error) {
+        console.error("Error al modificar el ejercicio:", error);
+      }
+    };
+  });
 
   return (
     <div>
@@ -26,13 +30,3 @@ const ExerciseModify = () => {
 };
 
 export default ExerciseModify;
-
-
-
-
-
-
-
-  
-
-    
