@@ -42,6 +42,9 @@ function ExerciseList() {
     fetchExercises();
   }, []);
 
+  if (loading) {
+    return <h1 className="loading-message">LOADING ...</h1>;
+  }
   let result;
 
   const searchHandler = (e) => {
@@ -75,10 +78,10 @@ function ExerciseList() {
   return (
     <div>
       {error && <p className="error-message">{error}</p>}
-      {loading && <h1 className="loading-message">LOADING ...</h1>}
+      {/* {loading && <h1 className="loading-message">LOADING ...</h1>} */}
 
       <div className="exerc-container">
-        {user.role === "admin" && (
+        {user && user.role === "admin" && (
           <Link to="/NewExercise" className="exerc-link">
             <button className="btn-new">Crear Nuevo Ejercicio</button>
           </Link>
