@@ -32,7 +32,7 @@ const ExerciseDetails = () => {
         };
         const response = await axios.get(
           `/api/exercise/${exerciseId}`,
-          options
+          options,
         );
         setExercise(response.data.data);
       } catch (err) {
@@ -151,8 +151,12 @@ const ExerciseDetails = () => {
           </div>
         )}
 
-        <Link to="#" onClick={() => window.history.back()}>
-          VOLVER
+        <Link
+          className="ReturListExercise"
+          to="#"
+          onClick={() => window.history.back()}
+        >
+          <h3>VOLVER</h3>
         </Link>
       </div>
     </div>

@@ -4,8 +4,10 @@
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: #646464;
+  background-color: rgba(91, 140, 254, 0.2);
+  color: white;
   text-align: center;
+
   box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.7);
 }
 

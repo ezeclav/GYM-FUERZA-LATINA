@@ -21,9 +21,11 @@
 .details-exercise {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 600px;
+  text-align: justify;
+  width: 950px;
   margin-top: 1rem;
+  color: white;
+  font-size: 17px;
 }
 .underline {
   text-decoration: underline;
@@ -33,8 +35,18 @@
   align-items: center;
   justify-content: center;
   margin: 10px;
-  background-color: blue;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
 }
 .buttons-container button {
   margin-right: 30px;
+  background-color: #003ef7;
+  color: white;
+}
+.buttons-container button:hover {
+  background-color: #39e8ff;
+}
+.ReturListExercise {
+  color: white;
 }
