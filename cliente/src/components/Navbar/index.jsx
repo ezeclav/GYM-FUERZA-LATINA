@@ -37,7 +37,7 @@ function Navbar() {
             </li>
             <li>
               <Link to="/favorites" onClick={closeMenu}>
-                Favorites
+                Mis Favoritos
               </Link>
             </li>
             <li onClick={logout}>

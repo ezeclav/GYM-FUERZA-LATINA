@@ -20,7 +20,7 @@ const deletetLikeModel = async (userId, exerciseId) => {
   const [result] = await pool.query(
     `
       DELETE FROM like_exercises
-      WHERE exerciseId = ?
+      WHERE exerciseId = ? AND userId= ?
       `,
     [exerciseId, userId],
   );

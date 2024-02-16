@@ -2,12 +2,23 @@ import React, { useState, useEffect } from "react";
 import "./likeToogle.css";
 
 const LikeToggle = ({ exerciseId }) => {
-  const storedLike = localStorage.getItem(`exercise-${exerciseId}`);
+  // Obtener el usuario actual desde el token
+  const token = localStorage.getItem("token");
+  const userId = token ? JSON.parse(atob(token.split(".")[1])).id : null;
+
+  // Obtener el estado inicial del like del localStorage al cargar el componente
+  const storedLike = userId
+    ? localStorage.getItem(`user-${userId}-exercise-${exerciseId}`)
+    : null;
   const [isLiked, setIsLiked] = useState(storedLike === "true");
 
   const handleLikeToggle = async () => {
     try {
-      const token = localStorage.getItem("token");
+      if (!token || !userId) {
+        console.error("Usuario no autenticado");
+        return;
+      }
+
       if (isLiked) {
         await fetch(`/api/dislike/${exerciseId}`, {
           method: "DELETE",
@@ -24,9 +35,13 @@ const LikeToggle = ({ exerciseId }) => {
           },
         });
       }
+
       // Toggle del estado y almacenar en el localStorage
       setIsLiked((prevIsLiked) => !prevIsLiked);
-      localStorage.setItem(`exercise-${exerciseId}`, (!prevIsLiked).toString()); // Usar !prevIsLiked en lugar de isLiked
+      localStorage.setItem(
+        `user-${userId}-exercise-${exerciseId}`,
+        (!isLiked).toString(),
+      );
     } catch (error) {
       console.error("Error de red:", error);
     }
@@ -34,9 +49,11 @@ const LikeToggle = ({ exerciseId }) => {
 
   // Usar useEffect para actualizar el estado cuando cambia el valor en localStorage
   useEffect(() => {
-    const storedLike = localStorage.getItem(`exercise-${exerciseId}`);
+    const storedLike = userId
+      ? localStorage.getItem(`user-${userId}-exercise-${exerciseId}`)
+      : null;
     setIsLiked(storedLike === "true");
-  }, [exerciseId]);
+  }, [userId, exerciseId]);
 
   return (
     <div>
