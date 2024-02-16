@@ -16,7 +16,7 @@ function Home() {
       {isAuthenticated && user ? (
         <>
           <h2 className="GymFont">GIMNASIOS FUERZA LATINA 🏋️‍♂️🤸‍♂️</h2>
-          <h3>Bienvenido: {user.username}</h3>
+          <h3 className="GymFont2">Bienvenido: {user.username}</h3>
         </>
       ) : (
         <>

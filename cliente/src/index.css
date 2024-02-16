@@ -28,7 +28,8 @@ body {
   place-items: center; */
   min-width: 320px;
   min-height: 100vh;
-  background-image: url(https://as01.epimg.net/deporteyvida/imagenes/2017/08/20/portada/1503239886_518293_1503240114_noticia_normal.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(Fondo.jpg);
   background-size: cover;
   background-position: center;
 }
