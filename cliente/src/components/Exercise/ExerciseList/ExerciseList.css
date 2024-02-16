@@ -11,7 +11,18 @@
   align-items: center;
   justify-content: center;
 }
-
+.btn-new {
+  background-color: #003ef7;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.btn-new:hover {
+  background-color: #39e8ff;
+}
 @media (max-width: 768px) {
   button.btn-new {
     font-weight: 200;

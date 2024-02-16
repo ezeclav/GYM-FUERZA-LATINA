@@ -60,7 +60,7 @@ const LikeToggle = ({ exerciseId }) => {
       <span
         className="like-toggle-heart"
         onClick={handleLikeToggle}
-        style={{ cursor: "pointer", color: isLiked ? "red" : "black" }}
+        style={{ cursor: "pointer", color: isLiked ? "red" : "white" }}
       >
         &#10084;
       </span>
