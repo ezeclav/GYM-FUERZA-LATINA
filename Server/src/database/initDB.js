@@ -38,7 +38,7 @@ const initDB = async () => {
     console.log("Eliminando tablas...");
     await pool.query(`USE ${MYSQL_DATABASE}`);
     await pool.query(
-      "DROP TABLE IF EXISTS like_exercises, photo_exercises, exercises, users",
+      "DROP TABLE IF EXISTS like_exercises, photo_exercises, exercises, users"
     );
 
     console.log("Creando tablas...");
@@ -91,7 +91,14 @@ const initDB = async () => {
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (userId) REFERENCES users(id_user),
                 FOREIGN KEY (exerciseId) REFERENCES exercises(id_exercise)
-            )
+                );
+    `);
+    await pool.query(`
+                ALTER TABLE like_exercises
+                ADD CONSTRAINT fk_like_exercises_exercise
+                FOREIGN KEY (exerciseId)
+                REFERENCES exercises(id_exercise)
+                ON DELETE CASCADE;
     `);
     console.log("Tablas creadas!");
   } catch (error) {
