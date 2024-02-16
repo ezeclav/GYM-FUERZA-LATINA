@@ -24,6 +24,29 @@ function ExerciseDelete() {
         }
       );
 
+      // Eliminar like si existe
+      if (exerciseData && exerciseData.likes && exerciseData.likes.length > 0) {
+        await axios.delete(`/api/dislike/${exerciseId}`, {
+          headers: {
+            Authorization: token,
+          },
+        });
+      }
+
+      // Eliminar foto si existe
+      if (
+        exerciseData &&
+        exerciseData.photos &&
+        exerciseData.photos.length > 0
+      ) {
+        const photoName = exerciseData.photos[0].name;
+        await axios.delete(`/api/exercise/${exerciseId}/photo/${photoName}`, {
+          headers: {
+            Authorization: token,
+          },
+        });
+      }
+
       // Eliminar ejercicio
       const response = await axios.delete(`api/deleteExercise/${exerciseId}`, {
         headers: {
@@ -32,20 +55,6 @@ function ExerciseDelete() {
       });
 
       if (response.data.status === "ok") {
-        // Eliminar foto si existe
-        if (
-          exerciseData &&
-          exerciseData.photos &&
-          exerciseData.photos.length > 0
-        ) {
-          const photoName = exerciseData.photos[0].name;
-          await axios.delete(`/api/exercise/${exerciseId}/photo/${photoName}`, {
-            headers: {
-              Authorization: token,
-            },
-          });
-        }
-
         setOkExercise("Ejercicio y foto eliminados con éxito.");
       }
     } catch (error) {

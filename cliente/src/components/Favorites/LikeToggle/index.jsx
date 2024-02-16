@@ -6,7 +6,7 @@ const LikeToggle = ({ exerciseId }) => {
   const token = localStorage.getItem("token");
   const userId = token ? JSON.parse(atob(token.split(".")[1])).id : null;
 
-  // Obtener el estado inicial del like del localStorage al cargar el componente
+  // Obtenemos el estado inicial del like del localStorage al cargar el componente
   const storedLike = userId
     ? localStorage.getItem(`user-${userId}-exercise-${exerciseId}`)
     : null;
@@ -40,14 +40,14 @@ const LikeToggle = ({ exerciseId }) => {
       setIsLiked((prevIsLiked) => !prevIsLiked);
       localStorage.setItem(
         `user-${userId}-exercise-${exerciseId}`,
-        (!isLiked).toString(),
+        (!isLiked).toString()
       );
     } catch (error) {
       console.error("Error de red:", error);
     }
   };
 
-  // Usar useEffect para actualizar el estado cuando cambia el valor en localStorage
+  // useEffect para actualizar el estado cuando cambia el valor en localStorage
   useEffect(() => {
     const storedLike = userId
       ? localStorage.getItem(`user-${userId}-exercise-${exerciseId}`)

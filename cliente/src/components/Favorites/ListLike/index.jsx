@@ -20,7 +20,8 @@ function ListLike() {
           },
         };
         const response = await axios.get("/api/listlikes", options);
-        console.log(response);
+        // console.log(response);
+
         // Enlistar de manera descendente:
         const reversedExercises = response.data.data;
 
@@ -52,7 +53,7 @@ function ListLike() {
       exercises.filter(
         (exercise) =>
           exercise.title.toLowerCase().indexOf(searchKeyword.toLowerCase()) !==
-          -1,
+          -1
       );
   } else {
     result = exercises;
@@ -78,14 +79,13 @@ function ListLike() {
             key={id_exercise}
             id={id_exercise}
             name={name}
-            // photos={photos.map((photo) => photo.name)}
             photos={photoName}
             description={description}
             typology={typology}
             muscle_group={muscle_group}
             equipment={equipment}
           />
-        ),
+        )
       )}
     </div>
   );
