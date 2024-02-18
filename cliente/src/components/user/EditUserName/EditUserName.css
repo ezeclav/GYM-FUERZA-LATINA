@@ -4,7 +4,7 @@
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: #646464;
+  background-color: #e1be8d99;
   text-align: center;
 }
 
@@ -36,8 +36,15 @@
   background-color: #0056b3;
 }
 
+/*************** MOVIL ************/
 @media (max-width: 768px) {
   .label-container label {
     font-weight: 200;
   }
+}
+
+/****************** TABLET *******************/ 
+
+@media (max-width: 1300px) {
+  
 }

@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./Navbar.css";
-import NewExercisePage from "../../pages/NewExercise/NewExercise";
 import ExerciseList from "../../pages/ExerciseList/ExerciseList";
+import Logo from "../../assets/Logo2.png"
 
 function Navbar() {
   const { isAuthenticated, logout } = useContext(AuthContext);
@@ -75,8 +75,12 @@ function Navbar() {
         <span></span>
         <span></span>
       </div>
+
     </div>
   );
 }
 
+//      <div>
+//<img src={Logo} className="logo"/>
+//</div>
 export default Navbar;

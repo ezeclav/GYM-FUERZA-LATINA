@@ -146,7 +146,7 @@ function NewExercise() {
         <button type="submit" className="btn btn-primary">
           Crear Ejercicio
         </button>
-        <Link to="#" onClick={() => window.history.back()}>
+        <Link className="btn-cancelar" to="#" onClick={() => window.history.back()}>
           Cancelar
         </Link>
       </form>

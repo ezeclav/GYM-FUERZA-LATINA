@@ -1,23 +1,128 @@
 .GymFont {
   font-family: "Black Ops One", system-ui;
-  font-size: 5rem;
+  font-size: 2rem;
+  margin-top: 1rem;
   color: #fdfdfd;
   text-shadow: 10px 10px 10px #0016a5;
+  align-items: center;
 }
+
 .GymFont2 {
+  display: flex;
   font-family: "Black Ops One", system-ui;
   font-size: 2rem;
   color: #fdfdfd;
-  text-shadow: 0px 8px 9px #0016a5;
+  text-shadow: 10px 10px 10px #0016a5;
+  align-items:start;
+  justify-content: center;
 }
+
+h3 {
+  font-size: 1.5rem;
+  color: rgb(166, 171, 169);
+}
+
+
 img {
   object-fit: fill;
   object-position: 0% 0%;
 }
-@media (max-width: 768px) {
-  .GymFont,
-  h2,
+
+.sesion {
+  display: flex;
+  background-color: rgba(70, 138, 227, 0.616);
+  height: 40vh;
+  width: 70vh;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vh;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #fdfdfd;
+
+} 
+
+
+/*******************  MÓVIL  **********************/
+
+@media (max-width: 768px){
+  .GymFont, h2 {
+    font-size: 1vw;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .sesion {
+    display: flex;
+    background-color: rgba(70, 138, 227, 0.616);
+    max-height: 50vh;
+    max-width: 80vh;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    margin-top: 15vh;
+
+  } 
+
   h3 {
+    color: rgb(166, 171, 169);
+    font-size: 2rem;
+  }
+
+  .GymFont {
+    font-family: "Black Ops One", system-ui;
     font-size: 1rem;
+    margin-top: 1rem;
+    color: #fdfdfd;
+    text-shadow: 10px 10px 10px #0016a5;
+    transform: rotateY(20%);
+  }
+}
+
+/****************** TABLET *******************/ 
+
+@media (max-width: 1300px) {
+  .GymFont,
+  h2 {
+    font-size: 1vh;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+  }
+
+  h3 {
+    color: rgb(166, 171, 169);
+    font-size: 1.3rem;
+  }
+
+  .sesion {
+    display: flex;
+    background-color: rgba(70, 138, 227, 0.616);
+    max-height: 50vh;
+    max-width: 80vh;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    margin-top: 15vh;
+
+  } 
+
+  .GymFont {
+    font-family: "Black Ops One", system-ui;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    color: #fdfdfd;
+    text-shadow: 10px 10px 10px #0016a5;
+    transform: rotateY(20%);
+  }
+
+  img {
+    object-fit: fill;
+    object-position: 0% 0%;
+    background-size: contain;
   }
 }

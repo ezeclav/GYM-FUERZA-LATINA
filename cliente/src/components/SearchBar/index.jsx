@@ -3,7 +3,7 @@ import "./SearchBar.css";
 function SearchBar({ searchHandler }) {
   return (
     <div className="search-bar">
-      <input
+       <input
         type="text"
         placeholder="Busca un ejercicio..."
         name="searchKeyword"

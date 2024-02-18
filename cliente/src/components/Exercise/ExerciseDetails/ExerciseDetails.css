@@ -48,5 +48,41 @@
   background-color: #39e8ff;
 }
 .ReturListExercise {
-  color: white;
+  color: rgb(255, 255, 255);
 }
+
+h3 {
+  background-color: #003ef7;
+  padding: 0.5vh;
+  border-radius: 5px;
+}
+
+/*******************  MÓVIL  **********************/
+
+@media (max-width: 768px) {
+  .details-exercise {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    max-width: 70vh;
+    padding: 0, 5vh;
+    margin-top: 1rem;
+    color: white;
+    font-size: 1rem;
+  }
+}
+
+/****************** TABLET *******************/ 
+
+@media (max-width: 1300px) {
+    .details-exercise {
+      display: flex;
+      flex-direction: column;
+      text-align: justify;
+      max-width: 80vh;
+      padding: 0, 5vh;
+      margin-top: 1rem;
+      color: white;
+      font-size: 1rem;
+    }
+  }

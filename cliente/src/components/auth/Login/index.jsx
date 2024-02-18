@@ -68,7 +68,7 @@ const Login = () => {
             type="email"
             name="email"
             value={credentials.email}
-            placeholder="Ingresa email"
+            placeholder="Ingresa tu email"
             onChange={handleChange}
           />
         </label>
@@ -79,7 +79,7 @@ const Login = () => {
             type="password"
             name="password"
             value={credentials.password}
-            placeholder="Ingresa contraseña"
+            placeholder="Ingresa tu contraseña"
             onChange={handleChange}
           />
         </label>
@@ -88,7 +88,7 @@ const Login = () => {
 
         <button type="submit">Ingresar</button>
         <a href="#" onClick={() => setshowPassRecovery(true)}>
-          Olvidaste tu contraseña?
+          ¿Olvidaste tu contraseña?
         </a>
       </form>
       {showPassRecovery && (
