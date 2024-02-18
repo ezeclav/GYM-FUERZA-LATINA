@@ -26,11 +26,7 @@ function ExerciseList() {
         };
         const response = await axios.get("/api/exercises", options);
 
-        // Enlistar de manera descendente:
         const reversedExercises = response.data.data;
-
-        // Enlistar de manera ascendente con RESERVE()
-        // const reversedExercises = response.data.data.reverse();
 
         setExercises(reversedExercises);
       } catch (err) {
@@ -78,7 +74,6 @@ function ExerciseList() {
   return (
     <div>
       {error && <p className="error-message">{error}</p>}
-      {/* {loading && <h1 className="loading-message">LOADING ...</h1>} */}
 
       <div className="exerc-container">
         {user && user.role === "admin" && (

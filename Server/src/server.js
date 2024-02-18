@@ -3,9 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 import fileUpload from "express-fileupload";
 import dotenv from "dotenv";
-
 import routes from "./routes/index.js";
-
 // para el manejo de errores
 import { notFoundController, errorController } from "./middlewares/index.js";
 

@@ -113,7 +113,7 @@ const ExerciseDetails = () => {
                 />
               </Modal>
             )}
-            {/*MODAL MODIFICAR EJERCICIO*/}
+           
             <button
               onClick={() => setShowModifyModal(true)}
               className="add-photo-button"
@@ -131,7 +131,6 @@ const ExerciseDetails = () => {
               </Modal>
             )}
 
-            {/*MODAL ELIMINAR EJERCICIO*/}
             <button
               onClick={() => setShowDeleteModal(true)}
               className="add-photo-button"

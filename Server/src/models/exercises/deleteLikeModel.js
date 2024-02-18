@@ -13,7 +13,7 @@ const deletetLikeModel = async (userId, exerciseId) => {
             `,
     [exerciseId, userId],
   );
-  console.log(favs);
+
   if (favs.length == 0) deleteLikeError();
 
   ///////////// SE ELIMINA EL LIKE DEL USUARIO //////////////////////

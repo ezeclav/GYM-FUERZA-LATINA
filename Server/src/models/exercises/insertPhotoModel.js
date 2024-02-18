@@ -10,7 +10,7 @@ const insertPhotoModel = async (name, exerciseId) => {
         `,
     [name, exerciseId],
   );
-  console.log(result);
+
   const { insertId } = result;
 
   return insertId;

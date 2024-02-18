@@ -9,7 +9,6 @@ function Navbar() {
   const { isAuthenticated, logout } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Función para cerrar el menú
   const closeMenu = () => {
     setIsOpen(false);
   };
@@ -21,7 +20,6 @@ function Navbar() {
       </div>
       <ul>
         {isAuthenticated ? (
-          // Usuario Logueado
           <div className={`nav_items ${isOpen && "open"}`}>
             <li>
               <Link to="/" onClick={closeMenu}>
@@ -50,7 +48,6 @@ function Navbar() {
             </li>
           </div>
         ) : (
-          // Usuario No Logueado
           <div className={`nav_items ${isOpen && "open"}`}>
             <li>
               <Link to="/" onClick={closeMenu}>
@@ -83,7 +80,4 @@ function Navbar() {
   );
 }
 
-//      <div>
-//<img src={Logo} className="logo"/>
-//</div>
 export default Navbar;

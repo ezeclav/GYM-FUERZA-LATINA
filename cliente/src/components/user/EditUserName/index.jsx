@@ -14,7 +14,6 @@ function EditUserName() {
     const newUsernameValue = event.target.value;
     setUsername(newUsernameValue);
 
-    // Verifica si el nuevo nombre de usuario ya está en uso
     try {
       const response = await axios.post("/api/check/users", {
         username: newUsernameValue,
@@ -29,7 +28,6 @@ function EditUserName() {
     event.preventDefault();
     setNewUsername("");
 
-    // Si el nuevo nombre de usuario ya está en uso, no realiza la actualización
     if (isUsernameTaken) {
       console.error("Nombre de usuario ya está en uso.");
       return;
@@ -49,10 +47,8 @@ function EditUserName() {
         },
       });
 
-      // console.log(response.data.status);
       if (response.data.status === "ok") {
         updateUser({ ...user, username: username });
-        console.log("Nombre de usuario actualizado con éxito");
         setNewUsername("Nombre de usuario actualizado con éxito");
       } else {
         console.error("Error al actualizar el nombre de usuario");

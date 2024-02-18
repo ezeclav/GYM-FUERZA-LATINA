@@ -4,7 +4,6 @@ import { AuthContext } from "../../../context/AuthContext.jsx";
 import Modal from "../../Modal";
 import Error from "../../Error";
 import PassRecovery from "../../user/PassRecovery";
-
 import "./Login.css";
 
 const Login = () => {
@@ -32,7 +31,6 @@ const Login = () => {
     e.preventDefault();
     setErrorValues("");
 
-    // Verificar que estén todos los campos completados
     if (!credentials.email || !credentials.password) {
       setErrorValues("por favor completa todos los campos requeridos");
       return;
@@ -41,7 +39,6 @@ const Login = () => {
     try {
       const response = await axios.post("api/users/login", credentials);
       login(response.data.data.token);
-      console.login(response);
     } catch (error) {
       setShowModal(true);
       setErrorCredentials(error.response.data.message);
@@ -56,7 +53,6 @@ const Login = () => {
     setShowModal(false);
   };
 
-  // console.log(err);
   return (
     <>
       <h2>INGRESAR</h2>

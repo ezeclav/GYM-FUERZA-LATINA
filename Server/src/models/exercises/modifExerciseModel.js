@@ -36,8 +36,6 @@ const modifExerciseModel = async (
     [name, description, typology, muscle_group, equipment]
   );
 
-  // console.log(result);
-
   return namePhoto;
 };
 

@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./likeToogle.css";
 
 const LikeToggle = ({ exerciseId }) => {
-  // Obtener el usuario actual desde el token
   const token = localStorage.getItem("token");
   const userId = token ? JSON.parse(atob(token.split(".")[1])).id : null;
 
-  // Obtenemos el estado inicial del like del localStorage al cargar el componente
   const storedLike = userId
     ? localStorage.getItem(`user-${userId}-exercise-${exerciseId}`)
     : null;
@@ -36,7 +34,6 @@ const LikeToggle = ({ exerciseId }) => {
         });
       }
 
-      // Toggle del estado y almacenar en el localStorage
       setIsLiked((prevIsLiked) => !prevIsLiked);
       localStorage.setItem(
         `user-${userId}-exercise-${exerciseId}`,
@@ -47,7 +44,6 @@ const LikeToggle = ({ exerciseId }) => {
     }
   };
 
-  // useEffect para actualizar el estado cuando cambia el valor en localStorage
   useEffect(() => {
     const storedLike = userId
       ? localStorage.getItem(`user-${userId}-exercise-${exerciseId}`)

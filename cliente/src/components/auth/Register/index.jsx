@@ -33,12 +33,11 @@ const Register = () => {
     setErrorConfirmPassword("");
     setErrorCredentials("");
 
-    // Verificar que las contraseñas sean iguales
     if (credentials.password !== credentials.confirmPassword) {
       setErrorConfirmPassword("Las contraseñas no coinciden");
       return;
     }
-    // Verificar que estén todos los campos completados
+
     if (
       !credentials.username ||
       !credentials.email ||
@@ -51,7 +50,6 @@ const Register = () => {
 
     try {
       const response = await axios.post("api/users/register", credentials);
-      // console.log(response.data.status);
       if (response.data.status === "ok") {
         setShowModal(true);
         setCredentials({
@@ -63,8 +61,6 @@ const Register = () => {
         setErrorConfirmPassword("");
       }
     } catch (error) {
-      // console.log(error);
-      // console.log(error.response.data.message);
       setNotOkRegister(error.response.data.message);
     }
   };
@@ -137,7 +133,7 @@ const Register = () => {
         <Modal onClose={handleModalClose}>
           <p>
             {" "}
-            Usuario registrado exitosamente...!! Por favor activa tu cuenta a
+           ¡Usuario registrado exitosamente! Por favor, activa tu cuenta a
             través del email que te hemos enviado.
           </p>
           <button onClick={handleModalClose}>Ok</button>

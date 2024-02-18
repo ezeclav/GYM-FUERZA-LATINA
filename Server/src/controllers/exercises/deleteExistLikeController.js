@@ -5,7 +5,6 @@ const deleteExistLikeController = async (req, res, next) => {
   try {
     let { exerciseId } = req.params;
     const userId = req.user.id;
-    console.log(exerciseId);
     if (!exerciseId) notFoundError();
 
     const exercise = await deleteLikeModel(userId, exerciseId);

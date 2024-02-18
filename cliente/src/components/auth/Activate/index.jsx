@@ -16,9 +16,7 @@ function Activate() {
           if (response.data.status === "ok") {
             setActivationSuccess(true);
           }
-          console.log(response.data);
         } catch (error) {
-          console.log(error);
         }
       }
     };

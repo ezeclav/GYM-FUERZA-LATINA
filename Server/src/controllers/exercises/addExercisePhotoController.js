@@ -5,10 +5,8 @@ import { photoLimitReachedError } from "../../services/errorService.js";
 
 const addExercisePhotoController = async (req, res, next) => {
   try {
-    // Obtenemos el id de al entrada de los path params.
     const { exerciseId } = req.params;
 
-    // // Obtenemos la información de la entrada para comprobar si somos los propietarios.
     const exercise = await selectExerciseByIdModel(exerciseId);
 
     if (exercise.photos.length > 0) {
@@ -18,7 +16,6 @@ const addExercisePhotoController = async (req, res, next) => {
     const photoName = await cloudinaryService(req.files.photo);
 
     const photoId = await insertPhotoModel(photoName, exerciseId);
-    console.log(photoId);
     res.send({
       status: "ok",
       data: {

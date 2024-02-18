@@ -1,6 +1,5 @@
 import getPool from "./getPool.js";
 import "dotenv/config";
-
 import fs from "fs/promises";
 import path from "path";
 import dotenv from "dotenv";
@@ -20,7 +19,6 @@ const folderEmpty = async (folder) => {
     // Crea la carpeta vacía nuevamente
     await fs.mkdir(folder);
 
-    console.log(`La carpeta ${UPLOADS_DIR} ha sido vaciada correctamente.`);
   } catch (error) {
     console.error(`Error al vaciar la carpeta ${UPLOADS_DIR}:`, error);
   }
@@ -32,16 +30,12 @@ const initDB = async () => {
   try {
     let pool = await getPool();
 
-    console.log("Creando base de datos...");
     await pool.query(`CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE}`);
 
-    console.log("Eliminando tablas...");
     await pool.query(`USE ${MYSQL_DATABASE}`);
     await pool.query(
       "DROP TABLE IF EXISTS like_exercises, photo_exercises, exercises, users"
     );
-
-    console.log("Creando tablas...");
 
     await pool.query(`
             CREATE TABLE IF NOT EXISTS users (
@@ -100,11 +94,11 @@ const initDB = async () => {
                 REFERENCES exercises(id_exercise)
                 ON DELETE CASCADE;
     `);
-    console.log("Tablas creadas!");
+
   } catch (error) {
     console.log(error);
   } finally {
-    // Cerramos el proceso.
+
     process.exit();
   }
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import auth from "../../../utils/auth";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import "./ExerciseDelete.css";
 
@@ -14,7 +14,6 @@ function ExerciseDelete() {
 
     const token = auth.getToken();
     try {
-      // Obtener información del ejercicio antes de eliminar (para poder eliminar la foto)
       const { data: exerciseData } = await axios.get(
         `/api/exercise/${exerciseId}`,
         {
@@ -24,7 +23,6 @@ function ExerciseDelete() {
         }
       );
 
-      // Eliminar like si existe
       if (exerciseData && exerciseData.likes && exerciseData.likes.length > 0) {
         await axios.delete(`/api/dislike/${exerciseId}`, {
           headers: {
@@ -33,7 +31,6 @@ function ExerciseDelete() {
         });
       }
 
-      // Eliminar foto si existe
       if (
         exerciseData &&
         exerciseData.photos &&
@@ -47,7 +44,6 @@ function ExerciseDelete() {
         });
       }
 
-      // Eliminar ejercicio
       const response = await axios.delete(`api/deleteExercise/${exerciseId}`, {
         headers: {
           Authorization: token,

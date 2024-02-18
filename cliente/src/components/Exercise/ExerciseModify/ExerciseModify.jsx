@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import auth from "../../../utils/auth";
 import { Link, useParams } from "react-router-dom";
-
 import "./ExerciseModify.css";
 
 function ExerciseModify() {
@@ -14,7 +13,7 @@ function ExerciseModify() {
     muscle_group: "",
     equipment: "",
   });
-  const [newPhoto, setNewPhoto] = useState(null); // Nuevo estado para la nueva foto
+  const [newPhoto, setNewPhoto] = useState(null);
   const { exerciseId } = useParams();
 
   useEffect(() => {
@@ -54,7 +53,7 @@ function ExerciseModify() {
   };
 
   const handlePhotoChange = (file) => {
-    setNewPhoto(file); // Guarda la nueva foto en el estado
+    setNewPhoto(file); 
   };
 
   const handleSubmit = async (e) => {
@@ -63,7 +62,7 @@ function ExerciseModify() {
 
     const token = auth.getToken();
     try {
-      // objeto FormData para incluir datos y la nueva foto
+      
       const formDataToSend = new FormData();
       formDataToSend.append("name", formData.name);
       formDataToSend.append("description", formData.description);
@@ -75,7 +74,6 @@ function ExerciseModify() {
         formDataToSend.append("photo", newPhoto);
       }
 
-      // solicitud PUT para la modificación
       const response = await axios.put(
         `api/modifExercise/${exerciseId}`,
         formDataToSend,

@@ -20,7 +20,7 @@ const selectExercisesByIdModel = async (exerciseId) => {
   );
 
   exercise[0].photos = photos;
-  console.log(exercise);
+  
   return exercise[0];
 };
 

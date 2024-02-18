@@ -1,6 +1,5 @@
 import deleteExerciseModel from "../../models/exercises/deleteExerciseModel.js";
 import { notFoundError } from "../../services/errorService.js";
-import { deletePhotoService } from "../../services/photoService.js";
 
 const deleteExercisescontroller = async (req, res, next) => {
   try {
@@ -9,10 +8,6 @@ const deleteExercisescontroller = async (req, res, next) => {
     if (!exerciseId) notFoundError;
 
     const exercise = await deleteExerciseModel(exerciseId);
-
-    //// si se utilizara almacenamiento local
-    // const { name } = exercise[0];
-    // await deletePhotoService(name);
 
     res.send({
       status: "ok",

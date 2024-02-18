@@ -1,5 +1,4 @@
 import updateUserPassModel from "../../models/users/updateUserPassModel.js";
-
 import validateSchemaUtil from "../../util/validateSchemaUtil.js";
 import editUserPassSchema from "../../schemas/users/editUserPassSchema.js";
 

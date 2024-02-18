@@ -1,8 +1,6 @@
 import randomstring from "randomstring";
-
 import validateSchemaUtil from "../../util/validateSchemaUtil.js";
 import newUserSchema from "../../schemas/users/newUserSchema.js";
-
 import insertUserModel from "../../models/users/insertUserModel.js";
 
 const newUserController = async (req, res, next) => {

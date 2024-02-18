@@ -1,11 +1,9 @@
-/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import Auth from "../utils/auth";
 import axios from "axios";
 
 export const AuthContext = createContext();
 
-// HOC = high order components
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -17,7 +15,6 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(true);
     } catch (error) {
       console.error("Error al obtener datos del usuario:", error);
-      // Manejar el error adecuadamente
     }
   };
 

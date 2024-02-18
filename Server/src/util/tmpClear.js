@@ -3,8 +3,6 @@ import path from "path";
 
 const tempFolderPath = path.join("../../", "tmp");
 
-console.log(tempFolderPath);
-
 const limpiarTemp = () => {
   fs.readdir(tempFolderPath, (err, files) => {
     if (err) {
@@ -23,7 +21,6 @@ const limpiarTemp = () => {
 
       if (tiempoTranscurrido > tiempoDeVida) {
         fs.unlinkSync(filePath); // Elimina el archivo si ha pasado el tiempo de vida
-        console.log(`Archivo ${file} eliminado.`);
       }
     });
     process.exit();

@@ -29,7 +29,6 @@ const selectExercisesByQueryParamsModel = async (params) => {
       `,
         [exercise.id_exercise]
       );
-      // console.log(photos);
 
       exercise.photos = photos;
     }

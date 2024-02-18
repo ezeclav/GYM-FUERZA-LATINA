@@ -1,9 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import auth from "../../../utils/auth";
-// import ExercisePhoto from "../ExercisePhoto/ExercisePhoto";
 import { Link, useNavigate } from "react-router-dom";
-
 import "./NewExercise.css";
 
 function NewExercise() {
