@@ -63,12 +63,13 @@
 @media (max-width: 768px) {
   .edit-profile-container {
     max-width: 600px;
-    margin: 10vh auto;
+    margin: 10% auto;
     padding-top: 1vh;
     padding-bottom: 5vh;
     border-radius: 8px;
     background-color: rgba(70, 138, 227, 0.616);;
     box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.7);
+  }
   
 
   .edit-profile-container h1 {
@@ -90,6 +91,6 @@
     text-decoration: none;
     justify-content: center;
   }
-}}
+}
 
 

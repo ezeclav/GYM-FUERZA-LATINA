@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import ExerciseCard from "../../exercise/ExerciseCard/ExerciseCard";
 
@@ -20,13 +19,8 @@ function ListLike() {
           },
         };
         const response = await axios.get("/api/listlikes", options);
-        // console.log(response);
 
-        // Enlistar de manera descendente:
         const reversedExercises = response.data.data;
-
-        // Enlistar de manera ascendente con RESERVE()
-        // const reversedExercises = response.data.data.reverse();
 
         setExercises(reversedExercises);
       } catch (err) {

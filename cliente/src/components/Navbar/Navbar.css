@@ -25,6 +25,7 @@ div ul li {
   justify-content: flex-end;
   list-style: none;
   margin-right: 15vh;
+  transition: transform 0.3s ease;
 }
 
 .nav_items.open {
@@ -75,7 +76,7 @@ div ul li {
     align-items: center;
     z-index: 10;
     transform: translateX(50%);
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
   }
 
   .nav_items.open {
@@ -119,7 +120,7 @@ div ul li {
 @media (max-width: 1300px) {
     .nav_items {
       position: fixed;
-      top: 60px;
+      top: 13%;
       right: 0;
       background: #000000;
       flex-direction: column;
@@ -128,7 +129,7 @@ div ul li {
       align-items: center;
       z-index: 10;
       transform: translateX(100%);
-      transition: transform 0.3s ease;
+      transition: transform 0.5s ease;
     }
   
     .nav_toggle {
@@ -148,7 +149,7 @@ div ul li {
     }
 
     .nav_items:not(.open) {
-      transform: translateX(150%);
+      transform: translateX(200%);
     }
 
     .nav_items.open {

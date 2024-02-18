@@ -15,16 +15,14 @@ function Home() {
         </>
       ) : (
         <>
-          <div>
+          <div className="no-login">
             <h2 className="GymFont2">GIMNASIOS FUERZA LATINA</h2>
-            <h3>Ingresa a tu cuenta por favor</h3>
+            <h4>Ingresa a tu cuenta por favor</h4>
           </div>
         </>
       )}
     </div>
   );
 }
-
-//  <h3 className="GymFont2">Bienvenido: {user.username}</h3>
 
 export default Home;

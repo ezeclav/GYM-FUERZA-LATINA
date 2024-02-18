@@ -1,10 +1,12 @@
 .GymFont {
+  display: flex;
   font-family: "Black Ops One", system-ui;
   font-size: 2rem;
   padding: 100px;
   color: #fdfdfd;
   text-shadow: 10px 10px 10px #0016a5;
   align-items: center;
+  justify-content: center;
 }
 
 .GymFont2 {
@@ -17,9 +19,12 @@
   justify-content: center;
 }
 
-h3 {
-  font-size: 1.5rem;
-  color: rgb(166, 171, 169);
+h4 {
+  display: flex;
+  font-size: 1.3rem;
+  color: rgb(0, 0, 0);
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -43,21 +48,21 @@ img {
 
 } 
 
+.no-login {
+  margin: 10%;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /*******************  MÓVIL  **********************/
 
 @media (max-width: 768px){
-  .GymFont, h2 {
-    font-size: 1vw;
-    margin: auto;
-    text-align: center;
-    justify-content: center;
-  }
 
   .sesion {
     display: flex;
     background-color: rgba(70, 138, 227, 0.616);
-    max-height: 70%;
+    max-height: 80%;
     max-width: 70%;
     flex-direction: column;
     justify-content: space-around;
@@ -73,19 +78,26 @@ img {
   }
 
   .GymFont {
+    display: flex;
     font-family: "Black Ops One", system-ui;
     font-size: 1rem;
     margin-top: 1rem;
     color: #fdfdfd;
     text-shadow: 10px 10px 10px #0016a5;
     transform: rotateY(20%);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .no-login {
+    margin: 20%;
   }
 }
 
 /****************** TABLET *******************/ 
 
 @media (max-width: 1300px) {
-  .GymFont,
+  .GymFont2,
   h2 {
     font-size: 1vh;
     margin: auto;
@@ -113,7 +125,7 @@ img {
 
   .GymFont {
     font-family: "Black Ops One", system-ui;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-top: 1rem;
     color: #fdfdfd;
     text-shadow: 10px 10px 10px #0016a5;
@@ -124,5 +136,9 @@ img {
     object-fit: fill;
     object-position: 0% 0%;
     background-size: contain;
+  }
+
+  .no-login {
+    margin: 20%;
   }
 }

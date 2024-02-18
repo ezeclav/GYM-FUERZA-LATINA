@@ -121,8 +121,7 @@ export const notLikeError = (resourse) => {
   throw {
     httpStatus: 404,
     code: "RESOURCE_NOT_FOUND",
-    // message: `el usuario '${resourse}' no ha dado LIKE a ningun ejercicio`,
-    message: `Todavía no le has dado LIKE a ningun ejercicio..!!`,
+    message: `Todavía no le has dado LIKE a ningun ejercicio`,
   };
 };
 

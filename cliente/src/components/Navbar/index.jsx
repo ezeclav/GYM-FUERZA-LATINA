@@ -44,7 +44,7 @@ function Navbar() {
               </Link>
             </li>
             <li onClick={logout}>
-              <Link to="/" onClick={closeMenu}>
+            <Link to="/" onClick={closeMenu}>
                 Salir
               </Link>
             </li>
