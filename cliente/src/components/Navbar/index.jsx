@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./Navbar.css";
 import ExerciseList from "../../pages/ExerciseList/ExerciseList";
-import Logo from "../../assets/Logo2.png"
+import logo from "../../assets/logo3.png"
 
 function Navbar() {
   const { isAuthenticated, logout } = useContext(AuthContext);
@@ -16,6 +16,9 @@ function Navbar() {
 
   return (
     <div className="navbar">
+      <div>
+        <img className="logo" src={logo} />
+      </div>
       <ul>
         {isAuthenticated ? (
           // Usuario Logueado

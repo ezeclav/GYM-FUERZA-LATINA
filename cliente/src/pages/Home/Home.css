@@ -1,7 +1,7 @@
 .GymFont {
   font-family: "Black Ops One", system-ui;
   font-size: 2rem;
-  margin-top: 1rem;
+  padding: 100px;
   color: #fdfdfd;
   text-shadow: 10px 10px 10px #0016a5;
   align-items: center;
@@ -31,8 +31,8 @@ img {
 .sesion {
   display: flex;
   background-color: rgba(70, 138, 227, 0.616);
-  height: 40vh;
-  width: 70vh;
+  max-height: 70%;
+  max-width: 50%;
   margin: auto;
   justify-content: center;
   align-items: center;
@@ -57,8 +57,8 @@ img {
   .sesion {
     display: flex;
     background-color: rgba(70, 138, 227, 0.616);
-    max-height: 50vh;
-    max-width: 80vh;
+    max-height: 70%;
+    max-width: 70%;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
