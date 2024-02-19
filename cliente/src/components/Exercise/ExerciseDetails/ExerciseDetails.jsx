@@ -77,10 +77,10 @@ const ExerciseDetails = () => {
               <h2 className="exercise-nombre">
                 <span className="underline">Nombre: </span>&nbsp; {name}
               </h2>
-              <h4 className="exercise-descripcion">
+              <p className="exercise-descripcion">
                 <span className="underline">Descripción: </span>&nbsp;
                 {description}
-              </h4>
+              </p>
               <p className="exercise-tipologia">
                 <span className="underline">Tipología:</span>&nbsp; {typology}
               </p>
@@ -113,7 +113,7 @@ const ExerciseDetails = () => {
                 />
               </Modal>
             )}
-           
+
             <button
               onClick={() => setShowModifyModal(true)}
               className="add-photo-button"
