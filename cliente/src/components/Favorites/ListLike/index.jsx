@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ExerciseCard from "../../exercise/ExerciseCard/ExerciseCard";
 
+const defaultExercise = "https://placehold.co/90x90.png";
+
 function ListLike() {
   const [exercises, setExercises] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -73,7 +75,7 @@ function ListLike() {
             key={id_exercise}
             id={id_exercise}
             name={name}
-            photos={photoName}
+            photos={photoName ? photoName : defaultExercise}
             description={description}
             typology={typology}
             muscle_group={muscle_group}

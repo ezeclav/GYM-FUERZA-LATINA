@@ -57,6 +57,10 @@ h3 {
   border-radius: 5px;
 }
 
+button.del-exercise-button {
+  background-color: #dc3545;
+}
+
 /*******************  MÓVIL  **********************/
 
 @media (max-width: 768px) {

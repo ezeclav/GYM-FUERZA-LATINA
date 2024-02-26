@@ -21,6 +21,8 @@ const ExerciseDetails = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [photos, setPhotos] = useState([]);
 
+  const defaultExercise = "https://placehold.co/90x90.png";
+
   useEffect(() => {
     const fetchExercises = async () => {
       try {
@@ -32,7 +34,7 @@ const ExerciseDetails = () => {
         };
         const response = await axios.get(
           `/api/exercise/${exerciseId}`,
-          options,
+          options
         );
         setExercise(response.data.data);
       } catch (err) {
@@ -55,19 +57,24 @@ const ExerciseDetails = () => {
 
   const { name, description, typology, muscle_group, equipment } = exercise;
 
+  const getMainPhoto = () => {
+    // Si hay fotos, devuelve la URL de la primera foto
+    if (exercise.photos && exercise.photos.length > 0) {
+      return exercise.photos[0].name;
+    }
+    // Si no hay fotos, devuelve la URL de la imagen por defecto
+    return defaultExercise;
+  };
+
   return (
     <div>
       <div className="exercise-details-container">
         <div className="foto-list">
-          {exercise.photos &&
-            exercise.photos.map((photo) => (
-              <img
-                key={photo.id_photo_exercise}
-                src={photo.name}
-                alt={`photo ${photo.id_photo_exercise}`}
-                className="exercise-foto"
-              />
-            ))}
+          <img
+            src={getMainPhoto()}
+            alt={`Main Photo`}
+            className="exercise-foto"
+          />
         </div>
         {error && <p>{error}</p>}
         {loading && <h1>LOADING ...</h1>}
@@ -133,7 +140,7 @@ const ExerciseDetails = () => {
 
             <button
               onClick={() => setShowDeleteModal(true)}
-              className="add-photo-button"
+              className="del-exercise-button"
             >
               Eliminar
             </button>
